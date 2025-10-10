@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Course Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+    header, section {
+      padding: 20px;
+    }
+    header {
+      background-color: #4CAF50;
+      color: white;
+    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+    }
+    nav ul li {
+      margin: 5px 0;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #4CAF50;
+    }
+    .lesson {
+      border-top: 1px solid #ccc;
+      padding-top: 10px;
+      margin-top: 20px;
+    }
+    .up-link {
+      display: block;
+      margin-top: 20px;
+      text-align: right;
+    }
+    .up-link a {
+      text-decoration: none;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <header id="top">
+    <h1>Welcome to the Web Development Course</h1>
+    <p>This course will guide you through the basics of HTML, CSS, and JavaScript to build modern websites.</p>
+  </header>
+
+  <section>
+    <h2>Lessons</h2>
+    <nav>
+      <ul>
+        <li><a href="#lesson1">Lesson 1: Introduction to HTML</a></li>
+        <li><a href="#lesson2">Lesson 2: Styling with CSS</a></li>
+        <li><a href="#lesson3">Lesson 3: JavaScript Basics</a></li>
+      </ul>
+    </nav>
+  </section>
+
+  <section class="lesson" id="lesson1">
+    <h3>Lesson 1: Introduction to HTML</h3>
+    <p>HTML (HyperText Markup Language) is the backbone of web pages. It structures content using elements like headings, paragraphs, links, and images.</p>
+    <div class="up-link"><a href="#top">🔝 Up</a></div>
+  </section>
+
+  <section class="lesson" id="lesson2">
+    <h3>Lesson 2: Styling with CSS</h3>
+    <p>CSS (Cascading Style Sheets) controls the look and feel of your website. You can style text, layout, colors, and more.</p>
+    <div class="up-link"><a href="#top">🔝 Up</a></div>
+  </section>
+
+  <section class="lesson" id="lesson3">
+    <h3>Lesson 3: JavaScript Basics</h3>
+    <p>JavaScript adds interactivity to your site. Learn how to respond to user actions, manipulate the DOM, and create dynamic content.</p>
+    <div class="up-link"><a href="#top">🔝 Up</a></div>
+  </section>
+
+</body>
+</html>
