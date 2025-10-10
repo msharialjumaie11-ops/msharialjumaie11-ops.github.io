@@ -2,53 +2,111 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Web Services</title>
+  <title>Web Services Course</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
     }
-    header, section {
-      padding: 20px;
-    }
+
     header {
-      background-color: #4CAF50;
+      background-color: #2E8B57;
       color: white;
+      padding: 30px 20px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
+
+    header h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+
+    header p {
+      margin-top: 10px;
+      font-size: 1.1em;
+    }
+
+    section {
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+      background-color: white;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #2E8B57;
+      border-bottom: 2px solid #2E8B57;
+      padding-bottom: 5px;
+    }
+
     nav ul {
       list-style: none;
       padding: 0;
     }
+
     nav ul li {
-      margin: 5px 0;
+      margin: 10px 0;
     }
+
     nav ul li a {
       text-decoration: none;
-      color: #4CAF50;
+      color: #2E8B57;
+      font-weight: bold;
+      transition: color 0.3s ease;
     }
-    .lesson {
-      border-top: 1px solid #ccc;
-      padding-top: 10px;
-      margin-top: 20px;
+
+    nav ul li a:hover {
+      color: #1c5f3e;
     }
+
+    .lesson h3 {
+      color: #444;
+    }
+
+    .lesson p {
+      margin-top: 10px;
+    }
+
     .up-link {
-      display: block;
-      margin-top: 20px;
       text-align: right;
+      margin-top: 20px;
     }
+
     .up-link a {
       text-decoration: none;
-      font-size: 20px;
+      font-size: 18px;
+      color: #2E8B57;
+      transition: color 0.3s ease;
+    }
+
+    .up-link a:hover {
+      color: #1c5f3e;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: #2E8B57;
+      color: white;
+      font-size: 0.9em;
     }
   </style>
 </head>
 <body>
 
   <header id="top">
-    <h1>Welcome to the Web Services - <b>Practical Part</b> Course</h1>
-    <p>This course will cover the practical part of the <b>Web Services</b>.</p>
+    <h1>Web Services – <b>Practical Part</b></h1>
+    <p>Explore hands-on lessons to master the practical side of web services.</p>
   </header>
 
   <section>
@@ -56,34 +114,33 @@
     <nav>
       <ul>
         <li><a href="#lesson1">Lecture 1: Introduction to HTML</a></li>
-        <li><a href="#lesson2">Lecture 2: Heading, Paragraph, and Ordering List in HTML</a></li>
-        <li><a href="#lesson3">Lecture 3: Unordering List and Intro to JavaScript Basics</a></li>
+        <li><a href="#lesson2">Lecture 2: Headings, Paragraphs & Ordered Lists</a></li>
+        <li><a href="#lesson3">Lecture 3: Unordered Lists & JavaScript Basics</a></li>
       </ul>
     </nav>
   </section>
 
   <section class="lesson" id="lesson1">
     <h3>Lecture 1: Introduction to HTML</h3>
-    <p>HTML (HyperText Markup Language) is the backbone of web pages. It structures content using elements like headings, paragraphs, links, and images.</p>
-    <div class="up-link"><a href="#top">🔝 Up</a></div>
+    <p>HTML (HyperText Markup Language) is the foundation of web pages. It structures content using elements like headings, paragraphs, links, and images.</p>
+    <div class="up-link"><a href="#top">🔝 Back to Top</a></div>
   </section>
 
   <section class="lesson" id="lesson2">
-    <h3>Lecture 2: Heading, Paragraph, and Ordering List in HTML</h3>
-    <p>CSS (Cascading Style Sheets) controls the look and feel of your website. You can style text, layout, colors, and more.</p>
-    <div class="up-link"><a href="#top">🔝 Up</a></div>
+    <h3>Lecture 2: Headings, Paragraphs & Ordered Lists</h3>
+    <p>Learn how to organize content with semantic HTML tags like headings, paragraphs, and ordered lists to improve readability and structure.</p>
+    <div class="up-link"><a href="#top">🔝 Back to Top</a></div>
   </section>
 
   <section class="lesson" id="lesson3">
-    <h3>Lecture 3: Unordering List and Intro to JavaScript Basics</h3>
-    <p>JavaScript adds interactivity to your site. Learn how to respond to user actions, manipulate the DOM, and create dynamic content.</p>
-    <div class="up-link"><a href="#top">🔝 Up</a></div>
+    <h3>Lecture 3: Unordered Lists & JavaScript Basics</h3>
+    <p>Discover how to use unordered lists for bullet points and get introduced to JavaScript, the language that brings interactivity to your web pages.</p>
+    <div class="up-link"><a href="#top">🔝 Back to Top</a></div>
   </section>
 
-  
   <footer>
     <p>© 2025 Mshari Aljumaie. All rights reserved.</p>
   </footer>
-  
+
 </body>
 </html>
