@@ -3,44 +3,60 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome to My GitHub Website</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-    }
-    header {
-      background-color: #333;
-      color: white;
-      padding: 1em 0;
-    }
-    main {
-      padding: 2em;
-    }
-    footer {
-      background-color: #333;
-      color: white;
-      padding: 1em 0;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-    }
-  </style>
+  <title>Your Name - Personal Website</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <h1>Hello, World!</h1>
-    <p>Welcome to my GitHub Pages site</p>
+    <h1>Your Name</h1>
+    <p>Educator | Author | Course Creator</p>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#lessons">Lessons</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#courses">Courses</a>
+      <a href="#publications">Publications</a>
+    </nav>
   </header>
-  <main>
-    <p>This is a simple static website hosted on GitHub Pages.</p>
-    <p>Feel free to customize this page with your own content!</p>
-  </main>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>Brief bio about your background, teaching philosophy, and interests.</p>
+  </section>
+
+  <section id="lessons">
+    <h2>Lessons</h2>
+    <ul id="lessonList"></ul>
+  </section>
+
+  <section id="certifications">
+    <h2>Certifications</h2>
+    <ul>
+      <li>Certified Web Developer – 2023</li>
+      <li>Teaching Excellence Award – 2022</li>
+    </ul>
+  </section>
+
+  <section id="courses">
+    <h2>Courses</h2>
+    <ul>
+      <li>Intro to HTML & CSS</li>
+      <li>JavaScript for Beginners</li>
+    </ul>
+  </section>
+
+  <section id="publications">
+    <h2>Publications</h2>
+    <ul>
+      <li><a href="#">"Modern Teaching Techniques" – Journal of Education</a></li>
+      <li><a href="#">"Learning Through Code" – Blog Series</a></li>
+    </ul>
+  </section>
+
   <footer>
-    <p>&copy; 2025 Your Name</p>
+    <p>© 2025 Your Name. All rights reserved.</p>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
