@@ -116,6 +116,7 @@
         <li><a href="#lesson1">Lecture 1: Introduction to HTML</a></li>
         <li><a href="#lesson2">Lecture 2: Headings, Paragraphs & Lists</a></li>
         <li><a href="#lesson3">Lecture 3: Introduction to JavaScript</a></li>
+        <li><a href="#lesson4">Lecture 4: Introduction to HTML Tables</a></li>
       </ul>
     </nav>
   </section>
@@ -302,6 +303,108 @@
     <div class="up-link"><a href="#top">🔝 Back to Top</a></div>
   </section>
 
+ <section class="lesson" id="lesson4">
+
+       <h2>📘 Introduction to HTML Tables</h2>
+        <p>
+          HTML tables are used to organize data into rows and columns.
+          They’re great for displaying structured information like schedules, price lists, or tag references.
+        </p>
+      
+        <h2>🧱 Basic Table Structure</h2>
+        <pre>
+      &lt;table&gt;
+        &lt;thead&gt;
+          &lt;tr&gt;
+            &lt;th&gt;Header 1&lt;/th&gt;
+            &lt;th&gt;Header 2&lt;/th&gt;
+          &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+          &lt;tr&gt;
+            &lt;td&gt;Data 1&lt;/td&gt;
+            &lt;td&gt;Data 2&lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/tbody&gt;
+      &lt;/table&gt;
+        </pre>
+      
+        <p><strong>Explanation:</strong></p>
+        <ul>
+          <li><code>&lt;table&gt;</code>: Defines the table.</li>
+          <li><code>&lt;thead&gt;</code>: Contains header rows.</li>
+          <li><code>&lt;tr&gt;</code>: Table row.</li>
+          <li><code>&lt;th&gt;</code>: Table header cell (bold by default).</li>
+          <li><code>&lt;td&gt;</code>: Table data cell.</li>
+        </ul>
+      
+        <h2>🎨 Formatting Tables with Attributes</h2>
+        <pre>
+      &lt;table border="1" cellpadding="8" cellspacing="0"&gt;
+        &lt;thead&gt;
+          &lt;tr&gt;
+            &lt;th&gt;Course&lt;/th&gt;
+            &lt;th&gt;Duration&lt;/th&gt;
+          &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+          &lt;tr&gt;
+            &lt;td&gt;HTML Basics&lt;/td&gt;
+            &lt;td&gt;2 Weeks&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td&gt;JavaScript Intro&lt;/td&gt;
+            &lt;td&gt;3 Weeks&lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/tbody&gt;
+      &lt;/table&gt;
+        </pre>
+      
+        <p><strong>Attributes:</strong></p>
+        <ul>
+          <li><code>border</code>: Adds a border around cells.</li>
+          <li><code>cellpadding</code>: Adds space inside cells.</li>
+          <li><code>cellspacing</code>: Adds space between cells.</li>
+        </ul>
+      
+        <h2>🧪 Try It Yourself</h2>
+        <p>Copy the code below into a file named <code>index.html</code> and open it in your browser:</p>
+        <pre>
+      &lt;!DOCTYPE html&gt;
+      &lt;html lang="en"&gt;
+        &lt;head&gt;
+          &lt;title&gt;HTML Table Example&lt;/title&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+          &lt;h2&gt;📋 Course Schedule&lt;/h2&gt;
+          &lt;table border="1" cellpadding="8"&gt;
+            &lt;thead&gt;
+              &lt;tr&gt;
+                &lt;th&gt;Course&lt;/th&gt;
+                &lt;th&gt;Duration&lt;/th&gt;
+              &lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody&gt;
+              &lt;tr&gt;
+                &lt;td&gt;HTML Basics&lt;/td&gt;
+                &lt;td&gt;2 Weeks&lt;/td&gt;
+              &lt;/tr&gt;
+              &lt;tr&gt;
+                &lt;td&gt;JavaScript Intro&lt;/td&gt;
+                &lt;td&gt;3 Weeks&lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/tbody&gt;
+          &lt;/table&gt;
+        &lt;/body&gt;
+      &lt;/html&gt;
+        </pre>
+
+   
+
+   <div class="up-link"><a href="#top">🔝 Back to Top</a></div>
+ </section>
+
+  
   <footer>
     <p>© 2025 Mshari Aljumaie. All rights reserved.</p>
   </footer>
