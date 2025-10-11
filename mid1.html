@@ -146,6 +146,18 @@
         console.error("Network error:", err);
       });
 
+      
+        function downloadXML() {
+          const name = document.getElementById("nameInput").value;
+          const xmlContent = `<user><name>${currentUser}</name></user>`;
+          const blob = new Blob([xmlContent], { type: "text/xml" });
+          const link = document.createElement("a");
+          link.href = URL.createObjectURL(blob);
+          link.download = "user.xml";
+          link.click();
+        }
+
+
       alert(`Exam submitted successfully for ${currentUser}! Score: ${score}/7`);
       this.reset();
       examSection.classList.add('hidden');
