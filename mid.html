@@ -64,13 +64,13 @@
 
     function generateQuestions() {
       const questions = [
-        { text: "What does HTML stand for?", options: ["Hyper Text Markup Language", "Home Tool Markup Language", "Hyperlinks and Text Markup Language", "Hyperlinking Text Management Language"] },
-        { text: "Which tag is used to create a hyperlink in HTML?", options: ["<link>", "<a>", "<href>", "<hyper>"] },
-        { text: "What does CSS stand for?", options: ["Computer Style Sheets", "Creative Style Syntax", "Cascading Style Sheets", "Colorful Style Sheets"] },
-        { text: "Which property changes text color in CSS?", options: ["font-color", "text-color", "color", "background-color"] },
-        { text: "Which method writes to the browser console?", options: ["console.write()", "log.console()", "console.log()", "document.log()"] },
-        { text: "Which HTML tag creates a line break?", options: ["<break>", "<lb>", "<br>", "<line>"] },
-        { text: "Which CSS property sets background color?", options: ["bg-color", "background", "background-color", "color"] }
+        { id: "q1", text: "What does HTML stand for?", options: ["Hyper Text Markup Language", "Home Tool Markup Language", "Hyperlinks and Text Markup Language", "Hyperlinking Text Management Language"] },
+        { id: "q2", text: "Which tag is used to create a hyperlink in HTML?", options: ["<link>", "<a>", "<href>", "<hyper>"] },
+        { id: "q3", text: "What does CSS stand for?", options: ["Computer Style Sheets", "Creative Style Syntax", "Cascading Style Sheets", "Colorful Style Sheets"] },
+        { id: "q4", text: "Which property changes text color in CSS?", options: ["font-color", "text-color", "color", "background-color"] },
+        { id: "q5", text: "Which method writes to the browser console?", options: ["console.write()", "log.console()", "console.log()", "document.log()"] },
+        { id: "q6", text: "Which HTML tag creates a line break?", options: ["<break>", "<lb>", "<br>", "<line>"] },
+        { id: "q7", text: "Which CSS property sets background color?", options: ["bg-color", "background", "background-color", "color"] }
       ];
 
       questions.forEach((q, i) => {
@@ -78,7 +78,7 @@
         div.className = 'question';
         div.innerHTML = `<label>Question ${i + 1}: ${q.text}</label><br/>` +
           q.options.map(opt =>
-            `<input type="radio" name="q${i + 1}" value="${opt}" required /> ${opt}<br/>`
+            `<input type="radio" name="${q.id}" value="${opt}" required /> ${opt}<br/>`
           ).join('');
         questionsContainer.appendChild(div);
       });
@@ -94,7 +94,7 @@
         if (--time < 0) {
           clearInterval(interval);
           alert("Time's up! Submitting your exam.");
-          document.getElementById('exam-form').submit();
+          document.getElementById('exam-form').requestSubmit();
         }
       }, 1000);
     }
@@ -107,20 +107,7 @@
         q4: "color",
         q5: "console.log()",
         q6: "<br>",
-        q7: "background-color",
-        q8: "var",
-        q9: "<tr>",
-        q10: "<td>",
-        q11: "<h1>",
-        q12: "<p>",
-        q13: "<img>",
-        q14: "<li>",
-        q15: "<ul>",
-        q16: "<ol>",
-        q17: "<form>",
-        q18: "<input>",
-        q19: "<input type='submit'>",
-        q20: "<input type='checkbox'>"
+        q7: "background-color"
       };
       let score = 0;
       for (let key in correctAnswers) {
@@ -142,8 +129,6 @@
       const score = calculateScore(answers);
       localStorage.setItem(`exam_${currentUser}`, JSON.stringify(answers));
 
-   
-
       fetch('/submit-result', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -161,9 +146,11 @@
         console.error("Network error:", err);
       });
 
-      alert(`Exam submitted successfully for ${currentUser}! Score: ${score}/20`);
+      alert(`Exam submitted successfully for ${currentUser}! Score: ${score}/7`);
       this.reset();
+      questionsContainer.innerHTML = '';
       examSection.classList.add('hidden');
+      loginSection.classList.remove('hidden');
     });
   </script>
 </body>
