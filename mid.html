@@ -142,21 +142,7 @@
       const score = calculateScore(answers);
       localStorage.setItem(`exam_${currentUser}`, JSON.stringify(answers));
 
-      const fs = require('fs');
-      
-      const results = [
-        { name: 'Ali', score: 85 },
-        { name: 'Fatima', score: 92 }
-      ];
-      
-      let xml = '<?xml version="1.0" encoding="UTF-8"?>\n<examResults>\n';
-      results.forEach(student => {
-        xml += `  <student>\n    <name>${student.name}</name>\n    <score>${student.score}</score>\n  </student>\n`;
-      });
-      xml += '</examResults>';
-      
-      fs.writeFileSync('results.xml', xml);
-
+   
 
       fetch('/submit-result', {
         method: 'POST',
