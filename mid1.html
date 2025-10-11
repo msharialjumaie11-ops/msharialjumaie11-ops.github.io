@@ -146,18 +146,39 @@
         console.error("Network error:", err);
       });
 
-      
-        function downloadXML() {
-          const name = document.getElementById("nameInput").value;
-          const xmlContent = `<user><name>${currentUser}</name></user>`;
-          const blob = new Blob([xmlContent], { type: "text/xml" });
-          const link = document.createElement("a");
-          link.href = URL.createObjectURL(blob);
-          link.download = "user.xml";
-          link.click();
+
+      function appendToXML() {
+            
+              const reader = new FileReader();
+              reader.onload = function (e) {
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(e.target.result, "text/xml");
+            
+                // Create new <user> element
+                const newUser = xmlDoc.createElement("user");
+                const nameNode = xmlDoc.createElement("name");
+                nameNode.textContent = name;
+                newUser.appendChild(nameNode);
+            
+                // Append to root
+                xmlDoc.documentElement.appendChild(newUser);
+            
+                // Serialize updated XML
+                const serializer = new XMLSerializer();
+                const updatedXML = serializer.serializeToString(xmlDoc);
+            
+                // Download updated file
+                const blob = new Blob([updatedXML], { type: "text/xml" });
+                const link = document.createElement("a");
+                link.href = URL.createObjectURL(blob);
+                link.download = "user.xml";
+                link.click();
+              };
+            
+              reader.readAsText(fileInput.files[0]);
         }
 
-
+      
       alert(`Exam submitted successfully for ${currentUser}! Score: ${score}/7`);
       this.reset();
       examSection.classList.add('hidden');
