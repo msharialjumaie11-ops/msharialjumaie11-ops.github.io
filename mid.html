@@ -142,6 +142,17 @@
       const score = calculateScore(answers);
       localStorage.setItem(`exam_${currentUser}`, JSON.stringify(answers));
 
+      fetch('/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          to: 'mshari.aljumaie11@gmail.com',
+          subject: currentUser,
+          message: score'
+          })
+        });
+
+
       fetch('/submit-result', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
