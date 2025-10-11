@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Exam Portal</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .hidden { display: none; }
+    .question { margin-bottom: 15px; }
+    .timer { font-weight: bold; color: red; margin-bottom: 20px; }
+    input[type="text"], input[type="password"] { padding: 8px; width: 200px; }
+    button { padding: 8px 16px; margin-top: 10px; }
+    #exam-form { max-width: 800px; }
+  </style>
+</head>
+<body>
+
+  <!-- Login Section -->
+  <div id="login-section">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Student ID" /><br/>
+    <input type="password" id="password" placeholder="Password" /><br/>
+    <button onclick="login()">Login</button>
+  </div>
+
+  <!-- Exam Section -->
+  <div id="exam-section" class="hidden">
+    <div class="timer" id="timer">Time Remaining: 2:00:00</div>
+    <form id="exam-form">
+      <h2>Exam Questions</h2>
+      <div id="questions-container"></div>
+      <button type="submit">Submit Exam</button>
+    </form>
+  </div>
+
+  <script>
+    // Mock student credentials
+    const students = {
+      "student001": "pass123",
+      "student002": "pass456",
+      "student003": "pass789",
+      // Add more students here
+    };
+
+    const loginSection = document.getElementById('login-section');
+    const examSection = document.getElementById('exam-section');
+    const questionsContainer = document.getElementById('questions-container');
+    const timerDisplay = document.getElementById('timer');
+    let currentUser = "";
+
+    function login() {
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      if (students[username] && students[username] === password) {
+        currentUser = username;
+        loginSection.classList.add('hidden');
+        examSection.classList.remove('hidden');
+        startTimer(2 * 60 * 60);
+        generateQuestions();
+      } else {
+        alert("Invalid credentials. Please try again.");
+      }
+    }
+
+    function generateQuestions() {
+      const questions = [
+        { text: "What does HTML stand for?", options: ["Hyper Text Markup Language", "Home Tool Markup Language", "Hyperlinks and Text Markup Language", "Hyperlinking Text Management Language"] },
+        { text: "Which tag is used to create a hyperlink in HTML?", options: ["<link>", "<a>", "<href>", "<hyper>"] },
+        { text: "What does CSS stand for?", options: ["Computer Style Sheets", "Creative Style Syntax", "Cascading Style Sheets", "Colorful Style Sheets"] },
+        { text: "Which property changes text color in CSS?", options: ["font-color", "text-color", "color", "background-color"] },
+        { text: "Which method writes to the browser console?", options: ["console.write()", "log.console()", "console.log()", "document.log()"] },
+        { text: "Which HTML tag creates a line break?", options: ["<break>", "<lb>", "<br>", "<line>"] },
+        { text: "Which CSS property sets background color?", options: ["bg-color", "background", "background-color", "color"] },
+        { text: "Which JavaScript keyword declares a variable?", options: ["var", "int", "declare", "define"] },
+        { text: "Which tag defines a table row?", options: ["<tr>", "<td>", "<table>", "<row>"] },
+        { text: "Which tag defines a table cell?", options: ["<cell>", "<td>", "<tr>", "<th>"] },
+        { text: "Which tag defines a heading?", options: ["<head>", "<h1>", "<title>", "<header>"] },
+        { text: "Which tag defines a paragraph?", options: ["<p>", "<para>", "<text>", "<pg>"] },
+        { text: "Which tag defines an image?", options: ["<img>", "<image>", "<src>", "<pic>"] },
+        { text: "Which tag defines a list item?", options: ["<li>", "<item>", "<ul>", "<list>"] },
+        { text: "Which tag defines an unordered list?", options: ["<ul>", "<ol>", "<list>", "<li>"] },
+        { text: "Which tag defines an ordered list?", options: ["<ol>", "<ul>", "<list>", "<li>"] },
+        { text: "Which tag defines a form?", options: ["<form>", "<input>", "<submit>", "<button>"] },
+        { text: "Which tag defines a text input?", options: ["<input>", "<text>", "<textbox>", "<field>"] },
+        { text: "Which tag defines a submit button?", options: ["<submit>", "<input type='submit'>", "<button>", "<send>"] },
+        { text: "Which tag defines a checkbox?", options: ["<checkbox>", "<input type='checkbox'>", "<check>", "<box>"] }
+      ];
+
+      questions.forEach((q, i) => {
+        const div = document.createElement('div');
+        div.className = 'question';
+        div.innerHTML = `<label>Question ${i + 1}: ${q.text}</label><br/>` +
+          q.options.map((opt, idx) =>
+            `<input type="radio" name="q${i + 1}" value="${opt}" required /> ${opt}<br/>`
+          ).join('');
+        questionsContainer.appendChild(div);
+      });
+    }
+
+    function startTimer(duration) {
+      let time = duration;
+      const interval = setInterval(() => {
+        const hours = Math.floor(time / 3600);
+        const minutes = Math.floor((time % 3600) / 60);
+        const seconds = time % 60;
+        timerDisplay.textContent = `Time Remaining: ${hours}:${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
+        if (--time < 0) {
+          clearInterval(interval);
+          alert("Time's up! Submitting your exam.");
+          document.getElementById('exam-form').submit();
+        }
+      }, 1000);
+    }
+
+    document.getElementById('exam-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      const answers = {};
+      formData.forEach((value, key) => {
+        answers[key] = value;
+      });
+      localStorage.setItem(`exam_${currentUser}`, JSON.stringify(answers));
+      alert(`Exam submitted successfully for ${currentUser}!`);
+      this.reset();
+      examSection.classList.add('hidden');
+    });
+  </script>
+</body>
+</html>
