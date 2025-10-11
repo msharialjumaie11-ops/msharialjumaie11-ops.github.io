@@ -194,7 +194,82 @@
   
   <section class="lesson" id="lesson2">
     <h3>Lecture 2: IP Addresses</h3>
-            
+
+           <div style="font-family: Arial, sans-serif; line-height: 1.6;">
+      
+        <!-- What is an IP Address -->
+        <section style="margin-bottom: 20px;">
+          <h2>🧠 What Is an IP Address?</h2>
+          <p>
+            An IP address is a unique identifier assigned to each device on a network. In IPv4, it’s written as four decimal numbers separated by dots (e.g., <strong>192.168.1.1</strong>), with each number ranging from 0 to 255. These numbers represent <strong>32 bits</strong>, divided into <em>network</em> and <em>host</em> portions.
+          </p>
+        </section>
+      
+        <!-- IP Address Classes Table -->
+        <section style="margin-bottom: 20px;">
+          <h2>🧮 The Five IP Address Classes</h2>
+          <table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%; text-align: left;">
+            <thead style="background-color: #f2f2f2;">
+              <tr>
+                <th>Class</th>
+                <th>Range of First Octet</th>
+                <th>Default Subnet Mask</th>
+                <th>Purpose</th>
+                <th>Hosts per Network</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>A</td><td>1 – 126</td><td>255.0.0.0</td><td>Very large networks</td><td>~16 million</td></tr>
+              <tr><td>B</td><td>128 – 191</td><td>255.255.0.0</td><td>Medium-sized networks</td><td>~65,000</td></tr>
+              <tr><td>C</td><td>192 – 223</td><td>255.255.255.0</td><td>Small networks (LANs)</td><td>254</td></tr>
+              <tr><td>D</td><td>224 – 239</td><td>N/A</td><td>Multicast (special group traffic)</td><td>N/A</td></tr>
+              <tr><td>E</td><td>240 – 254</td><td>N/A</td><td>Reserved for research/testing</td><td>N/A</td></tr>
+            </tbody>
+          </table>
+        </section>
+      
+        <!-- Class Breakdown -->
+        <section style="margin-bottom: 20px;">
+          <h2>🔍 Class Breakdown</h2>
+          <h3 style="color: #1B5E20;">🟩 Class A</h3>
+          <p><strong>First octet:</strong> 1–126</p>
+          <p>Used for very large organizations or ISPs.</p>
+          <p><strong>Example:</strong> 10.0.0.1 (also a private IP)</p>
+      
+          <h3 style="color: #FFC107;">🟨 Class B</h3>
+          <p><strong>First octet:</strong> 128–191</p>
+          <p>Used by universities, corporations, and medium networks.</p>
+          <p><strong>Example:</strong> 172.16.0.1 (private IP range)</p>
+      
+          <h3 style="color: #0D47A1;">🟦 Class C</h3>
+          <p><strong>First octet:</strong> 192–223</p>
+          <p>Common for home and small business networks.</p>
+          <p><strong>Example:</strong> 192.168.1.1 (private IP)</p>
+      
+          <h3 style="color: #6A1B9A;">🟪 Class D</h3>
+          <p><strong>First octet:</strong> 224–239</p>
+          <p>Used for multicast—sending data to multiple devices simultaneously.</p>
+      
+          <h3 style="color: #B71C1C;">🟥 Class E</h3>
+          <p><strong>First octet:</strong> 240–254</p>
+          <p>Reserved for experimental and future use.</p>
+        </section>
+      
+        <!-- Private vs Public IPs -->
+        <section>
+          <h2>🧩 Private vs Public IPs</h2>
+          <p>Private IPs are used inside local networks and are not routable on the internet.</p>
+          <p><strong>Common private ranges:</strong></p>
+          <ul>
+            <li><strong>Class A:</strong> 10.0.0.0 – 10.255.255.255</li>
+            <li><strong>Class B:</strong> 172.16.0.0 – 172.31.255.255</li>
+            <li><strong>Class C:</strong> 192.168.0.0 – 192.168.255.255</li>
+          </ul>
+        </section>
+
+</div>
+
+    
     <div class="up-link"><a href="#top">🔝 Back to Top</a></div>
   </section>
 
