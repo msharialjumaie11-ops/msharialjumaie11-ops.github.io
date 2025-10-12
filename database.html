@@ -114,6 +114,7 @@
       <ul>
         <li><a href="#lesson1">Lecture 1: What Is a Database?</a></li>
         <li><a href="#lesson2">Lecture 2: What Is SQL?</a></li>
+        <li><a href="#lesson3">Lecture 3: Creating Table in SQL</a></li>
       </ul>
     </nav>
   </section>
@@ -209,6 +210,69 @@
   <pre><code>SELECT column1, column2 FROM table_name WHERE condition;</code></pre>
 
    <div class="up-link"><a href="#top">🔝 Back to Top</a></div>
+</section>
+
+
+<section class="lesson" id="lesson3">>
+  <h2>🧱 Creating Table in SQL </h2>
+  <p>
+    A table is a structured collection of data organized into <strong>rows</strong> and <strong>columns</strong>:
+  </p>
+  <ul>
+    <li><strong>Rows</strong>: Represent individual records (e.g., one student).</li>
+    <li><strong>Columns</strong>: Represent attributes of those records (e.g., name, age, grade).</li>
+  </ul>
+</section>
+
+<section>
+  <h2>🧾 Basic Syntax of CREATE TABLE</h2>
+  <pre><code>CREATE TABLE table_name (
+  column1 datatype,
+  column2 datatype,
+  column3 datatype,
+  ...
+);</code></pre>
+  <ul>
+    <li><strong>table_name</strong>: The name of your table.</li>
+    <li><strong>column1, column2, etc.</strong>: The names of the columns.</li>
+    <li><strong>datatype</strong>: Specifies the type of data each column can store (e.g., <code>INT</code>, <code>VARCHAR</code>, <code>DATE</code>).</li>
+  </ul>
+</section>
+
+<section>
+  <h2>🧪 Example: Creating a Students Table</h2>
+  <pre><code>CREATE TABLE Students (
+  ID INT,
+  Name VARCHAR(50),
+  Age INT,
+  Grade CHAR(1)
+);</code></pre>
+  <p>This creates a table named <code>Students</code> with:</p>
+  <ul>
+    <li><strong>ID</strong>: An integer for student ID</li>
+    <li><strong>Name</strong>: A string up to 50 characters</li>
+    <li><strong>Age</strong>: An integer</li>
+    <li><strong>Grade</strong>: A single character (e.g., A, B, C)</li>
+  </ul>
+</section>
+
+<section>
+  <h2>🛡️ Adding Constraints</h2>
+  <p>Constraints help enforce rules on the data:</p>
+  <ul>
+    <li><strong>PRIMARY KEY</strong>: Uniquely identifies each row</li>
+    <li><strong>NOT NULL</strong>: Prevents empty values</li>
+    <li><strong>UNIQUE</strong>: Ensures all values in a column are different</li>
+  </ul>
+  <p>Example with constraints:</p>
+  <pre><code>CREATE TABLE Students (
+  ID INT PRIMARY KEY,
+  Name VARCHAR(50) NOT NULL,
+  Age INT CHECK (Age >= 0),
+  Grade CHAR(1)
+);</code></pre>
+  
+<div class="up-link"><a href="#top">🔝 Back to Top</a></div>
 </section>
 
 
