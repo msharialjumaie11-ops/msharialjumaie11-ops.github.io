@@ -115,6 +115,7 @@
         <li><a href="#lesson1">Lecture 1: What Is a Database?</a></li>
         <li><a href="#lesson2">Lecture 2: What Is SQL?</a></li>
         <li><a href="#lesson3">Lecture 3: Creating Table in SQL</a></li>
+        <li><a href="#lesson4">Lecture 3: Inserting Data into a Table</a></li>
       </ul>
     </nav>
   </section>
@@ -211,7 +212,7 @@
 </section>
 
 
-<section class="lesson" id="lesson3">>
+<section class="lesson" id="lesson3">
   <h2>🧱 Creating Table in SQL </h2>
   <p>
     A table is a structured collection of data organized into <strong>rows</strong> and <strong>columns</strong>:
@@ -268,6 +269,87 @@
 </section>
 
 
+<section class="lesson" id="lesson4">
+<section>
+  <h2>🧾 Inserting Data into a Table</h2>
+  <p>
+    To insert data into a table, you first need to create the table with defined columns and data types.
+    Then you use the <code>INSERT INTO</code> command to add records. This process is essential for building and populating any relational database.
+  </p>
+</section>
+
+<section>
+  <h3>🧱 Step 1: Create a Table</h3>
+  <p>Start by defining the structure of your table using the <code>CREATE TABLE</code> statement. Here's an example for a simple <code>Students</code> table:</p>
+  <pre><code>CREATE TABLE Students (
+  ID INT PRIMARY KEY,
+  Name VARCHAR(50),
+  Age INT,
+  Grade CHAR(1)
+);</code></pre>
+  <ul>
+    <li><strong>ID</strong>: A unique identifier for each student.</li>
+    <li><strong>Name</strong>: A string up to 50 characters.</li>
+    <li><strong>Age</strong>: An integer value.</li>
+    <li><strong>Grade</strong>: A single character (e.g., A, B, C).</li>
+  </ul>
+</section>
+
+<section>
+  <h3>🟢 Step 2: Insert Data into the Table</h3>
+  <p>Use the <code>INSERT INTO</code> statement to add records:</p>
+  <pre><code>INSERT INTO Students (ID, Name, Age, Grade)
+VALUES (1, 'Aisha', 20, 'A');</code></pre>
+
+  <p>You can insert multiple records like this:</p>
+  <pre><code>INSERT INTO Students (ID, Name, Age, Grade)
+VALUES 
+(2, 'Khalid', 22, 'B'),
+(3, 'Sara', 19, 'A');</code></pre>
+</section>
+
+<section>
+  <h3>🧠 Notes on INSERT</h3>
+  <ul>
+    <li>You must match the number and order of values with the specified columns.</li>
+    <li>If a column is auto-incremented, you can skip it in the <code>INSERT</code> statement.</li>
+    <li>Use <code>NULL</code> for unknown or optional values.</li>
+  </ul>
+</section>
+
+<section>
+  <h3>🎓 Student Task</h3>
+  <p>Ask your students to complete the following:</p>
+
+  <h4>✅ Task Instructions:</h4>
+  <ul>
+    <li>Create a table named <code>Courses</code> with the following columns:</li>
+    <ul>
+      <li><code>CourseID</code> (INT, Primary Key)</li>
+      <li><code>CourseName</code> (VARCHAR(100))</li>
+      <li><code>Instructor</code> (VARCHAR(50))</li>
+      <li><code>Credits</code> (INT)</li>
+    </ul>
+    <li>Insert at least 3 records into the <code>Courses</code> table.</li>
+  </ul>
+
+  <h4>📝 Example Output:</h4>
+  <pre><code>CREATE TABLE Courses (
+  CourseID INT PRIMARY KEY,
+  CourseName VARCHAR(100),
+  Instructor VARCHAR(50),
+  Credits INT
+);
+
+INSERT INTO Courses (CourseID, CourseName, Instructor, Credits)
+VALUES 
+(101, 'Database Systems', 'Dr. Mshari', 3),
+(102, 'Web Development', 'Prof. Aisha', 4),
+(103, 'AI Fundamentals', 'Dr. Khalid', 3);</code></pre>
+</section>
+<div class="up-link"><a href="#top">🔝 Back to Top</a></div>
+</section>
+    
     
   
   <footer>
