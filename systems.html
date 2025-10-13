@@ -13,7 +13,7 @@
     }
 
     header {
-      background-color: #1B5E20;
+      background-color: #1b4166;
       color: white;
       padding: 30px 20px;
       text-align: center;
@@ -44,8 +44,8 @@
     }
 
     h2 {
-      color: #1B5E20;
-      border-bottom: 2px solid #1B5E20;
+      color: #1b4166;
+      border-bottom: 2px solid #1b4166;
       padding-bottom: 5px;
     }
 
@@ -60,7 +60,7 @@
 
     nav ul li a {
       text-decoration: none;
-      color: #1B5E20;
+      color: #1b4166;
       font-weight: bold;
       transition: color 0.3s ease;
     }
@@ -85,7 +85,7 @@
     .up-link a {
       text-decoration: none;
       font-size: 18px;
-      color: #1B5E20;
+      color: #1b4166;
       transition: color 0.3s ease;
     }
 
@@ -96,7 +96,7 @@
     footer {
       text-align: center;
       padding: 15px;
-      background-color: #1B5E20;
+      background-color: #1b4166;
       color: white;
       font-size: 0.9em;
     }
@@ -105,35 +105,206 @@
 <body>
 
   <header id="top">
-    <h1>Web Services – <b>Practical Part</b></h1>
-    <p>Explore hands-on lectures to master the practical side of <b>Web Services</b>.</p>
+    <h1>Systems and Linux – <b>Practical Part</b></h1>
+    <p><b>Systems and Linux</b>.</p>
   </header>
 
   <section>
     <h2>Lectures</h2>
     <nav>
       <ul>
-        <li><a href="#lesson1">Lecture 1: Introduction to HTML</a></li>
-        <li><a href="#lesson2">Lecture 2: Headings, Paragraphs & Lists</a></li>
+        <li><a href="#lesson1">Lecture 1: What Is an Operating System?</a></li>
+        <li><a href="#lesson2">Lecture 2: Linux Terminal Commands</a></li>
       </ul>
     </nav>
   </section>
 
  <section class="lesson" id="lesson1">
 
+<h2>🧠 What Is an Operating System?</h2>
+<p>An <strong>Operating System (OS)</strong> is the core software that manages your computer’s hardware and software. It acts like a bridge between you and the machine.</p>
 
+<h3>🔧 Key Functions of an OS:</h3>
+<ul>
+  <li><strong>Resource Management:</strong> Controls CPU, memory, storage, and input/output devices.</li>
+  <li><strong>User Interface:</strong> Provides a way for users to interact (e.g., Windows GUI or Linux terminal).</li>
+  <li><strong>File System Management:</strong> Organizes and secures files on storage devices.</li>
+  <li><strong>Multitasking:</strong> Runs multiple applications simultaneously.</li>
+  <li><strong>Security:</strong> Manages user permissions and protects system integrity.</li>
+</ul>
 
-   
+<h3>🖥️ Common Operating Systems:</h3>
+<table border="1" cellpadding="6" cellspacing="0">
+  <thead>
+    <tr>
+      <th>OS Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Windows</td>
+      <td>Most popular desktop OS</td>
+    </tr>
+    <tr>
+      <td>macOS</td>
+      <td>Apple’s OS for Mac computers</td>
+    </tr>
+    <tr>
+      <td>Linux</td>
+      <td>Open-source, customizable OS</td>
+    </tr>
+    <tr>
+      <td>Android</td>
+      <td>Mobile OS used in smartphones</td>
+    </tr>
+    <tr>
+      <td>iOS</td>
+      <td>Apple’s mobile OS</td>
+    </tr>
+  </tbody>
+</table>
+<p><strong>Ubuntu</strong> is a Linux-based OS known for its simplicity, security, and community support.</p>
+
+<h2>🐧 How to Download and Install Ubuntu</h2>
+<p>Here’s a step-by-step guide to installing <strong>Ubuntu Desktop 24.04 LTS</strong>:</p>
+
+<ol>
+  <li>
+    <strong>📥 Download Ubuntu</strong><br>
+    Visit the <a href="https://ubuntu.com/download/desktop" target="_blank">Ubuntu download page</a>.<br>
+    Choose the latest version (e.g., Ubuntu 24.04 LTS).<br>
+    Save the <code>.iso</code> file to your computer.
+  </li>
+  <li>
+    <strong>🔥 Create a Bootable USB</strong><br>
+    Use a tool like <a href="https://www.balena.io/etcher/" target="_blank">balenaEtcher</a> (works on Windows, macOS, Linux).<br>
+    Plug in a USB stick (12GB+ recommended).<br>
+    Open Etcher → Select the ISO file → Choose USB → Click “Flash!”.
+  </li>
+  <li>
+    <strong>🚀 Boot from USB</strong><br>
+    Insert the USB into the target computer.<br>
+    Restart and press <code>F12</code> (or <code>F2</code>/<code>F10</code>/<code>Esc</code> depending on your system) to open the boot menu.<br>
+    Select the USB drive to boot into Ubuntu.
+  </li>
+  <li>
+    <strong>🛠️ Install Ubuntu</strong><br>
+    Choose your language and keyboard layout.<br>
+    Connect to Wi-Fi (optional).<br>
+    Select “Install Ubuntu.”<br>
+    Choose installation type:
+    <ul>
+      <li>Erase disk and install Ubuntu (for fresh install).</li>
+      <li>Install alongside Windows (for dual boot).</li>
+    </ul>
+    Set your username and password.<br>
+    Click “Install” and wait ~30 minutes.
+  </li>
+  <li>
+    <strong>✅ Final Steps</strong><br>
+    Restart your computer.<br>
+    Remove the USB stick.<br>
+    Ubuntu will boot up, ready to use!
+  </li>
+</ol>
 
    <div class="up-link"><a href="#top">🔝 Back to Top</a></div>
  </section>
 
- <section class="lesson" id="lesson1">
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+  
+ <section class="lesson" id="lesson2">
 
+<h2>🖥️ Linux Terminal Commands</h2>
+<p>The Linux terminal is a powerful tool that gives you direct control over your system. Whether you're managing files, installing software, or navigating directories, mastering a few basic commands can make you feel like a pro.</p>
 
-   
+<h3>🔑 11 Essential Linux Commands</h3>
+<table border="1" cellpadding="6" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Command</th>
+      <th>Purpose</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>ls</code></td>
+      <td>Lists files and directories</td>
+      <td><code>ls -la</code> shows all files with details</td>
+    </tr>
+    <tr>
+      <td><code>cd</code></td>
+      <td>Changes directory</td>
+      <td><code>cd Documents</code> moves into the Documents folder</td>
+    </tr>
+    <tr>
+      <td><code>pwd</code></td>
+      <td>Prints current directory path</td>
+      <td><code>pwd</code> shows where you are in the system</td>
+    </tr>
+    <tr>
+      <td><code>mkdir</code></td>
+      <td>Creates a new directory</td>
+      <td><code>mkdir new_folder</code></td>
+    </tr>
+    <tr>
+      <td><code>rm</code></td>
+      <td>Removes files or directories</td>
+      <td><code>rm file.txt</code> or <code>rm -r folder/</code></td>
+    </tr>
+    <tr>
+      <td><code>cp</code></td>
+      <td>Copies files or directories</td>
+      <td><code>cp file.txt backup.txt</code></td>
+    </tr>
+    <tr>
+      <td><code>mv</code></td>
+      <td>Moves or renames files</td>
+      <td><code>mv old.txt new.txt</code></td>
+    </tr>
+    <tr>
+      <td><code>touch</code></td>
+      <td>Creates an empty file</td>
+      <td><code>touch notes.txt</code></td>
+    </tr>
+    <tr>
+      <td><code>cat</code></td>
+      <td>Displays file content</td>
+      <td><code>cat file.txt</code></td>
+    </tr>
+    <tr>
+      <td><code>sudo</code></td>
+      <td>Runs commands with admin rights</td>
+      <td><code>sudo apt update</code></td>
+    </tr>
+    <tr>
+      <td><code>man</code></td>
+      <td>Shows manual/help for a command</td>
+      <td><code>man ls</code> explains how <code>ls</code> works</td>
+    </tr>
+  </tbody>
+</table>
 
+<h3>🧪 Try It Yourself: <a href="https://bellard.org/jslinux/" target="_blank">JSLinux Online Terminal</a></h3>
+<p>JSLinux lets you run Linux in your browser — no installation needed. Just open the link, choose a console-based Linux system, and start typing commands like:</p>
+
+<pre><code>bash
+ls
+mkdir test
+cd test
+touch hello.txt
+cat hello.txt
+</code></pre>
+
+<h3>🧠 Tips for Learning</h3>
+<ul>
+  <li>Use <code>man &lt;command&gt;</code> to explore any command in depth.</li>
+  <li>Practice combining commands (e.g., <code>cd && ls</code>).</li>
+  <li>Try breaking things — Linux is a great place to experiment safely.</li>
+</ul>   
    <div class="up-link"><a href="#top">🔝 Back to Top</a></div>
  </section>
 
