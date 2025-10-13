@@ -114,8 +114,8 @@
       <ul>
         <li><a href="#lesson1">Lecture 1: What Is Network Security? </a></li>
         <li><a href="#lesson2">Lecture 2: Introduction to Network Security in Windows </a></li>
-        <li><a href="#lesson3">Lecture 3: </a></li>
-        <li><a href="#lesson4">Lecture 4: </a></li>
+        <li><a href="#lesson3">Lecture 3: Why Use PowerShell for Network Security? </a></li>
+        <li><a href="#lesson4">Lecture 4: Why Use CMD for Network Security? </a></li>
       </ul>
     </nav>
   </section>
@@ -241,9 +241,56 @@
 
    <section class="lesson" id="lesson3">
 
+<section>
+  <h2>🧠 Why Use PowerShell for Network Security?</h2>
+  <p>PowerShell is a command-line tool built into Windows that lets you automate tasks and manage system settings. For network security, it helps you:</p>
+  <ul>
+    <li>Monitor and control network traffic</li>
+    <li>Configure firewall rules</li>
+    <li>Set IP and DNS settings</li>
+    <li>Detect and respond to suspicious activity</li>
+  </ul>
+</section>
 
+<section>
+  <h2>🔍 Basic Security-Related Cmdlets</h2>
+  <p>Here are some essential PowerShell commands for network security:</p>
 
-   
+  <h3>1. View Network Adapters</h3>
+  <pre><code>Get-NetAdapter</code></pre>
+  <p>Shows all network interfaces, their status, and MAC addresses.</p>
+
+  <h3>2. Check IP Configuration</h3>
+  <pre><code>Get-NetIPAddress</code></pre>
+  <p>Displays IP addresses, subnet masks, and gateways—great for verifying setup.</p>
+
+  <h3>3. Test Network Connectivity</h3>
+  <pre><code>Test-NetConnection -ComputerName google.com</code></pre>
+  <p>Checks if a host is reachable (like ping). Add <code>-TraceRoute</code> to see the path.</p>
+
+  <h3>4. Manage Firewall Rules</h3>
+  <pre><code>Get-NetFirewallRule</code></pre>
+  <p>Lists all firewall rules. You can filter by name or direction.</p>
+
+  <pre><code>New-NetFirewallRule -DisplayName "Allow HTTP" -Direction Inbound -Protocol TCP -LocalPort 80 -Action Allow</code></pre>
+  <p>Creates a rule to allow HTTP traffic on port 80.</p>
+
+  <pre><code>Enable-NetFirewallRule -Name "YourRuleName"</code></pre>
+  <pre><code>Disable-NetFirewallRule -Name "YourRuleName"</code></pre>
+  <p>Turns firewall rules on or off.</p>
+
+  <h3>5. Flush DNS Cache</h3>
+  <pre><code>Clear-DnsClientCache</code></pre>
+  <p>Useful for resolving DNS-related issues or after changing DNS settings.</p>
+
+  <h3>6. Set DNS Servers</h3>
+  <pre><code>Set-DnsClientServerAddress -InterfaceAlias "Ethernet" -ServerAddresses ("8.8.8.8", "8.8.4.4")</code></pre>
+  <p>Assigns custom DNS servers to your network adapter.</p>
+
+  <h3>7. Set Static IP Address</h3>
+  <pre><code>New-NetIPAddress -InterfaceAlias "Ethernet" -IPAddress "192.168.1.100" -PrefixLength 24 -DefaultGateway "192.168.1.1"</code></pre>
+  <p>Configures a static IP for a specific adapter.</p>
+</section>
 
    <div class="up-link"><a href="#top">🔝 Back to Top</a></div>
  </section>
@@ -251,6 +298,70 @@
 
  <section class="lesson" id="lesson4">
 
+<section>
+  <h2>🧠 Why Use CMD for Network Security?</h2>
+  <p>CMD is a built-in Windows tool that allows users to interact with the system using text-based commands. For network security, CMD helps you:</p>
+  <ul>
+    <li>Test internet and local connectivity</li>
+    <li>View IP and DNS settings</li>
+    <li>Monitor open ports and active connections</li>
+    <li>Diagnose routing and firewall issues</li>
+  </ul>
+</section>
+
+<section>
+  <h2>🔍 Essential CMD Commands for Network Security</h2>
+
+  <h3>1. Check Internet Connectivity</h3>
+  <pre><code>ping www.google.com</code></pre>
+  <p>Sends packets to a remote server to test if your internet connection is working. If you get replies, the connection is active.</p>
+
+  <h3>2. Trace Network Route</h3>
+  <pre><code>tracert www.google.com</code></pre>
+  <p>Shows the path your data takes to reach a destination. Useful for spotting delays or broken routes.</p>
+
+  <h3>3. View IP Configuration</h3>
+  <pre><code>ipconfig</code></pre>
+  <p>Displays your IP address, subnet mask, and default gateway.</p>
+
+  <pre><code>ipconfig /all</code></pre>
+  <p>Shows detailed info including DNS servers, MAC address, and DHCP status.</p>
+
+  <h3>4. Renew IP Address</h3>
+  <pre><code>ipconfig /release</code></pre>
+  <pre><code>ipconfig /renew</code></pre>
+  <p>Releases and renews your IP address—helpful when fixing connectivity issues.</p>
+
+  <h3>5. Flush DNS Cache</h3>
+  <pre><code>ipconfig /flushdns</code></pre>
+  <p>Clears stored DNS entries to resolve name resolution problems.</p>
+
+  <h3>6. Check DNS Resolution</h3>
+  <pre><code>nslookup www.microsoft.com</code></pre>
+  <p>Shows the IP address associated with a domain name. Useful for verifying DNS functionality.</p>
+
+  <h3>7. Monitor Network Connections</h3>
+  <pre><code>netstat -a</code></pre>
+  <p>Lists all active connections and listening ports.</p>
+
+  <pre><code>netstat -b</code></pre>
+  <p>Shows which programs are using each connection.</p>
+
+  <pre><code>netstat -n</code></pre>
+  <p>Displays connections in numerical format (IP addresses only).</p>
+
+  <h3>8. View Routing Table</h3>
+  <pre><code>route print</code></pre>
+  <p>Displays your system’s routing table—useful for diagnosing routing issues.</p>
+
+  <h3>9. List Network Interfaces</h3>
+  <pre><code>getmac</code></pre>
+  <p>Shows MAC addresses of all network adapters.</p>
+
+  <h3>10. Check Connected Devices</h3>
+  <pre><code>arp -a</code></pre>
+  <p>Displays IP and MAC addresses of devices recently connected to your network.</p>
+</section>
 
 
    
