@@ -13,7 +13,7 @@
     }
 
     header {
-      background-color: #1B5E20;
+      background-color: #1b4166;
       color: white;
       padding: 30px 20px;
       text-align: center;
@@ -44,8 +44,8 @@
     }
 
     h2 {
-      color: #1B5E20;
-      border-bottom: 2px solid #1B5E20;
+      color: #1b4166;
+      border-bottom: 2px solid #1b4166;
       padding-bottom: 5px;
     }
 
@@ -60,7 +60,7 @@
 
     nav ul li a {
       text-decoration: none;
-      color: #1B5E20;
+      color: #1b4166;
       font-weight: bold;
       transition: color 0.3s ease;
     }
@@ -85,7 +85,7 @@
     .up-link a {
       text-decoration: none;
       font-size: 18px;
-      color: #1B5E20;
+      color: #1b4166;
       transition: color 0.3s ease;
     }
 
@@ -96,7 +96,7 @@
     footer {
       text-align: center;
       padding: 15px;
-      background-color: #1B5E20;
+      background-color: #1b4166;
       color: white;
       font-size: 0.9em;
     }
@@ -105,22 +105,82 @@
 <body>
 
   <header id="top">
-    <h1>Web Services – <b>Practical Part</b></h1>
-    <p>Explore hands-on lectures to master the practical side of <b>Web Services</b>.</p>
+    <h1>Data Mining – <b>Practical Part</b></h1>
+    <p><b>Data Mining</b>.</p>
   </header>
 
   <section>
     <h2>Lectures</h2>
     <nav>
       <ul>
-        <li><a href="#lesson1">Lecture 1: Introduction to HTML</a></li>
-        <li><a href="#lesson2">Lecture 2: Headings, Paragraphs & Lists</a></li>
+        <li><a href="#lesson1">Lecture 1: What Is Data Mining?</a></li>
+        <li><a href="#lesson2">Lecture 2: What Is R Programming?</a></li>
       </ul>
     </nav>
   </section>
 
- <section class="lesson" id="lesson1">
+ <section class="lesson" id="lesson2">
 
+<h2>🧠 What Is Data Mining?</h2>
+<p>Data mining is like digging for gold—but instead of soil, you're digging through data. It involves analyzing large volumes of information to uncover hidden patterns, relationships, and trends that aren’t immediately obvious.</p>
+
+<h3>🔍 Key Goals of Data Mining:</h3>
+<ul>
+  <li>Find patterns in customer behavior, sales, or system performance.</li>
+  <li>Predict outcomes like future sales or disease risk.</li>
+  <li>Segment data into meaningful groups (e.g., customer types).</li>
+  <li>Detect anomalies such as fraud or system failures.</li>
+</ul>
+
+<h3>🛠️ Common Data Mining Techniques</h3>
+<table border="1" cellpadding="6" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Technique</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Classification</td>
+      <td>Assigns data to predefined categories (e.g., spam vs. not spam).</td>
+    </tr>
+    <tr>
+      <td>Clustering</td>
+      <td>Groups similar data points together (e.g., customer segments).</td>
+    </tr>
+    <tr>
+      <td>Regression</td>
+      <td>Predicts numeric values (e.g., house prices).</td>
+    </tr>
+    <tr>
+      <td>Association Rules</td>
+      <td>Finds relationships between variables (e.g., people who buy X also buy Y).</td>
+    </tr>
+    <tr>
+      <td>Anomaly Detection</td>
+      <td>Identifies unusual data points (e.g., fraud detection).</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>🔄 The Data Mining Process</h3>
+<ol>
+  <li><strong>Business Understanding:</strong> Define the problem or goal.</li>
+  <li><strong>Data Collection:</strong> Gather data from databases, sensors, or logs.</li>
+  <li><strong>Data Preparation:</strong> Clean and format the data (ETL: Extract, Transform, Load).</li>
+  <li><strong>Modeling:</strong> Apply algorithms to find patterns.</li>
+  <li><strong>Evaluation:</strong> Check if the insights are useful.</li>
+  <li><strong>Deployment:</strong> Use the results to make decisions or automate actions.</li>
+</ol>
+
+<h3>🧪 Real-Life Applications</h3>
+<ul>
+  <li><strong>Marketing:</strong> Target ads based on customer behavior.</li>
+  <li><strong>Healthcare:</strong> Predict disease risks from patient data.</li>
+  <li><strong>Finance:</strong> Detect fraud or assess credit risk.</li>
+  <li><strong>Retail:</strong> Optimize inventory and pricing strategies.</li>
+</ul>
 
 
    
@@ -128,25 +188,40 @@
    <div class="up-link"><a href="#top">🔝 Back to Top</a></div>
  </section>
 
- <section class="lesson" id="lesson1">
+ <section class="lesson" id="lesson2">
+<h2>🧠 What Is R Programming?</h2>
+<p><strong>R</strong> is a powerful programming language designed for <em>statistical analysis</em>, <em>data visualization</em>, and <em>machine learning</em>. It’s widely used by data scientists, researchers, and educators to explore data and build predictive models.</p>
 
+<h3>🔍 Why Use R?</h3>
+<ul>
+  <li>Built-in support for statistics and math</li>
+  <li>Rich ecosystem of packages (like <code>ggplot2</code>, <code>dplyr</code>, <code>caret</code>)</li>
+  <li>Excellent for data visualization</li>
+  <li>Free and open-source</li>
+  <li>Great for academic research, data mining, and AI experiments</li>
+</ul>
 
+<h3>📦 Basic R Syntax Examples</h3>
+<pre><code># Create a vector
+scores <- c(85, 90, 78)
 
-   
+# Calculate mean
+mean(scores)
+
+# Create a data frame
+students <- data.frame(name = c("Ali", "Sara"), score = scores)
+
+# Plot a histogram
+hist(scores)
+</code></pre>
+
+<h3>🧪 Try It Yourself: <a href="https://rdrr.io/snippets/" target="_blank">RDrr.io Online R Compiler</a></h3>
+<p>RDrr.io lets you run R code instantly in your browser—no installation needed. Just paste your code, click <strong>Run</strong>, and see the output. It supports thousands of R packages and is perfect for quick experiments or teaching demos.</p>
 
    <div class="up-link"><a href="#top">🔝 Back to Top</a></div>
  </section>
 
 
-  
-   <section class="lesson" id="lesson2">
-
-
-
-   
-
-   <div class="up-link"><a href="#top">🔝 Back to Top</a></div>
- </section>
 
   
   <footer>
