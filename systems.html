@@ -115,6 +115,7 @@
       <ul>
         <li><a href="#lesson1">Lecture 1: What Is an Operating System?</a></li>
         <li><a href="#lesson2">Lecture 2: Linux Terminal Commands</a></li>
+        <li><a href="#lesson3">Lecture 3: Editing Files in the Linux Terminal</a></li>
       </ul>
     </nav>
   </section>
@@ -304,6 +305,66 @@ cat hello.txt
   <li>Try breaking things — Linux is a great place to experiment safely.</li>
 </ul>   
    <div class="up-link"><a href="#top">🔝 Back to Top</a></div>
+ </section>
+
+
+  
+<section class="lesson" id="lesson3">
+<h2>🧠 Editing Files in the Linux Terminal</h2>
+<p>Editing files directly in the terminal is essential for:</p>
+<ul>
+  <li>Configuring system settings</li>
+  <li>Writing scripts or code</li>
+  <li>Managing logs or data files on remote servers</li>
+</ul>
+<p>It’s fast, lightweight, and works even without a graphical interface.</p>
+
+<h3>✏️ How to Access Nano</h3>
+<p>Nano is a beginner-friendly text editor available on most Linux systems. To open or create a file using Nano:</p>
+<pre><code>nano filename.txt</code></pre>
+<p>
+  If <code>filename.txt</code> exists, it will open for editing.<br>
+  If it doesn’t exist, Nano will create it automatically.
+</p>
+
+<h3>🛠️ Nano Editor Cheat Sheet</h3>
+<table border="1" cellpadding="6" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Shortcut</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Ctrl + O</td><td>Save the file (Write Out)</td></tr>
+    <tr><td>Enter</td><td>Confirm filename after saving</td></tr>
+    <tr><td>Ctrl + X</td><td>Exit Nano</td></tr>
+    <tr><td>Ctrl + G</td><td>Help (view command list)</td></tr>
+    <tr><td>Ctrl + K</td><td>Cut current line</td></tr>
+    <tr><td>Ctrl + U</td><td>Paste last cut line</td></tr>
+    <tr><td>Ctrl + W</td><td>Search within the file</td></tr>
+    <tr><td>Ctrl + \</td><td>Replace text</td></tr>
+    <tr><td>Ctrl + C</td><td>Show cursor position</td></tr>
+    <tr><td>Ctrl + _</td><td>Go to specific line number</td></tr>
+    <tr><td>Alt + U</td><td>Undo last action</td></tr>
+    <tr><td>Alt + E</td><td>Redo undone action</td></tr>
+  </tbody>
+</table>
+
+<h3>📁 Example Workflow</h3>
+<pre><code>nano notes.txt</code></pre>
+<p>
+  Type your content.<br>
+  Press <strong>Ctrl + O</strong> → then <strong>Enter</strong> to save.<br>
+  Press <strong>Ctrl + X</strong> to exit.
+</p>
+
+<h3>🧪 Try It Yourself</h3>
+<p>If you're using a browser-based Linux environment like <a href="https://bellard.org/jslinux/" target="_blank">JSLinux</a> or a cloud shell, try:</p>
+<pre><code>echo "Hello, Mshari!" > hello.txt
+nano hello.txt</code></pre>
+
+  <div class="up-link"><a href="#top">🔝 Back to Top</a></div>
  </section>
 
   
