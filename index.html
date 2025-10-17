@@ -11,6 +11,26 @@
     <h1>Mshari Aljumaie</h1>
     <p>Educator | Author | Course Creator</p>
 <nav>
+   <style>
+    nav a {
+      display: inline-block;
+      padding: 10px 16px;
+      margin: 6px;
+      background-color: #007acc;     /* Button background */
+      color: white;                  /* Text color */
+      border: none;                  /* Remove default border */
+      border-radius: 6px;            /* Rounded corners */
+      text-decoration: none;         /* Remove underline */
+      font-weight: bold;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Optional: subtle shadow */
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    nav a:hover {
+      background-color: #005fa3;     /* Darker on hover */
+      transform: scale(1.05);        /* Slight zoom effect */
+    }
+  </style>
   <a href="#about" data-tooltip="Learn more about me">About</a>
   <a href="#tech" data-tooltip="Latest tech news worth reading">Worth Reading Tech News</a>
   <a href="#courses" data-tooltip="Explore available courses">Courses</a>
