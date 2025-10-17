@@ -10,33 +10,52 @@
   <header>
     <h1>Mshari Aljumaie</h1>
     <p>Educator | Author | Course Creator</p>
- <nav>
-  <style>
-    nav a {
-      display: inline-block;
-      border: 1px solid #007acc;
-      padding: 6px 10px;
-      margin: 4px;
-      text-decoration: none;
-      color: #333;
-      border-radius: 4px;
-      transition: background-color 0.3s, color 0.3s;
-    }
+ <style>
+  nav a {
+    position: relative;
+    display: inline-block;
+    border: 1px solid #007acc;
+    padding: 6px 10px;
+    margin: 4px;
+    text-decoration: none;
+    color: #333;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+  }
 
-    nav a:hover {
-      background-color: #007acc;
-      color: #fff;
-    }
-  </style>
+  nav a:hover {
+    background-color: #007acc;
+    color: #fff;
+  }
 
-  <a href="#about">About</a>
-  <a href="#tech">Worth Reading Tech News</a>
-  <a href="#courses">Courses</a>
-  <a href="#publications">Publications</a>
-  <a href="#Contact">Contact</a>
+  nav a::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: -30px;
+    left: 0;
+    background-color: #333;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    font-size: 12px;
+  }
+
+  nav a:hover::after {
+    opacity: 1;
+  }
+</style>
+
+<nav>
+  <a href="#about" data-tooltip="Learn more about me">About</a>
+  <a href="#tech" data-tooltip="Latest tech news worth reading">Worth Reading Tech News</a>
+  <a href="#courses" data-tooltip="Explore available courses">Courses</a>
+  <a href="#publications" data-tooltip="View my publications">Publications</a>
+  <a href="#Contact" data-tooltip="Get in touch">Contact</a>
 </nav>
-
-
 
   </header>
 
