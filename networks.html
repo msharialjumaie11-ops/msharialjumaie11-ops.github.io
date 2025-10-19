@@ -114,6 +114,7 @@
       <ul>
         <li><a href="#lesson1">Lecture 1: Introduction to Networks Cables</a></li>
         <li><a href="#lesson2">Lecture 2: IP Addresses</a></li>
+        <li><a href="#lesson3">Lecture 3:  Cisco Packet Tracer – Setup & Basic Network</a></li>
       </ul>
     </nav>
   </section>
@@ -272,6 +273,67 @@
     <div class="up-link"><a href="#top">🔝 Back to Top</a></div>
   </section>
 
+  
+  <section class="lesson" id="lesson3">
+   <h1>🖥️ Cisco Packet Tracer – Setup & Basic Network</h1>
+
+  <h2>📦 Step 1: Download Cisco Packet Tracer</h2>
+  <ul>
+    <li>Go to the <a href="https://www.netacad.com" target="_blank">Cisco Networking Academy</a> website.</li>
+    <li>Create a free account or log in.</li>
+    <li>Navigate to the “Resources” or “Download Packet Tracer” section.</li>
+    <li>Choose the version for your operating system (Windows, macOS, or Linux).</li>
+    <li>Download and install the software.</li>
+  </ul>
+
+  <div class="note">
+    💡 You must be logged into NetAcad to access the download page.
+  </div>
+
+  <h2>🌐 Step 2: Create a Simple Network (2 PCs + 1 Switch)</h2>
+
+  <h3>🔹 1. Launch Packet Tracer</h3>
+  <p>Open the application and start a new project.</p>
+
+  <h3>🔹 2. Add Devices</h3>
+  <ul>
+    <li>From the bottom device panel:</li>
+    <li>Go to <strong>End Devices</strong> → drag <strong>PC</strong> twice into the workspace.</li>
+    <li>Go to <strong>Switches</strong> → drag <strong>Switch (e.g., 2960)</strong> into the workspace.</li>
+  </ul>
+
+  <h3>🔹 3. Connect Devices</h3>
+  <ul>
+    <li>Select <strong>Connections</strong> (lightning icon).</li>
+    <li>Choose <strong>Copper Straight-Through Cable</strong>.</li>
+    <li>Connect:</li>
+    <ul>
+      <li>PC1 → FastEthernet0 to Switch → FastEthernet0/1</li>
+      <li>PC2 → FastEthernet0 to Switch → FastEthernet0/2</li>
+    </ul>
+  </ul>
+
+  <h3>🔹 4. Assign IP Addresses</h3>
+  <ul>
+    <li>Click on <strong>PC1</strong> → Desktop tab → IP Configuration:</li>
+    <pre>
+IP: 192.168.1.10
+Subnet Mask: 255.255.255.0
+    </pre>
+    <li>Repeat for <strong>PC2</strong>:</li>
+    <pre>
+IP: 192.168.1.20
+Subnet Mask: 255.255.255.0
+    </pre>
+  </ul>
+
+  <h3>🔹 5. Test Connectivity</h3>
+  <ul>
+    <li>On <strong>PC1</strong> → Desktop → Command Prompt:</li>
+    <pre>ping 192.168.1.20</pre>
+    <li>You should see successful replies if the setup is correct.</li>
+  </ul>
+  </section>
 
 
 
