@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BMI Calculator</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    label, input { display: block; margin: 10px 0; }
+    .result { font-weight: bold; margin-top: 20px; }
+    .note { background: #f0f8ff; padding: 10px; border-left: 4px solid #3498db; margin-top: 10px; }
+  </style>
+</head>
+<body>
+
+  <h2>🧮 BMI Calculator</h2>
+
+  <label for="weight">Weight (kg):</label>
+  <input type="number" id="weight" min="30" max="300" required />
+
+  <label for="height">Height (cm):</label>
+  <input type="number" id="height" min="100" max="250" required />
+
+  <button onclick="calculateBMI()">Calculate BMI</button>
+
+  <div class="result" id="bmiResult"></div>
+
+  <div class="note">
+    <strong>What is BMI?</strong><br>
+    BMI (Body Mass Index) is a measure of body fat based on height and weight. It helps assess whether a person is underweight, normal weight, overweight, or obese.
+  </div>
+
+  <script>
+    function calculateBMI() {
+      const weight = parseFloat(document.getElementById('weight').value);
+      const heightCm = parseFloat(document.getElementById('height').value);
+      const heightM = heightCm / 100;
+
+      const bmi = weight / (heightM * heightM);
+      let category = "";
+
+      if (bmi < 18.5) {
+        category = "Underweight";
+      } else if (bmi >= 18.5 && bmi < 24.9) {
+        category = "Normal weight";
+      } else if (bmi >= 25 && bmi < 29.9) {
+        category = "Overweight";
+      } else if (bmi >= 30) {
+        category = "Obese";
+      } else {
+        category = "Unclassified";
+      }
+
+      document.getElementById('bmiResult').textContent =
+        `Your BMI is ${bmi.toFixed(1)} – ${category}`;
+    }
+  </script>
+
+  <p><strong>References:</strong></p>
+  <ul>
+    <li><a href="https://www.cdc.gov/healthyweight/assessing/bmi/index.html" target="_blank">CDC – BMI Information</a></li>
+    <li><a href="https://www.who.int/news-room/fact-sheets/detail/obesity-and-overweight" target="_blank">WHO – Obesity and Overweight</a></li>
+    <li><a href="https://www.nhs.uk/live-well/healthy-weight/bmi-calculator/" target="_blank">NHS – BMI Calculator</a></li>
+  </ul>
+
+</body>
+</html>
