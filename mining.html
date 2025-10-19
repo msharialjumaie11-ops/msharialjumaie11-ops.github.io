@@ -115,6 +115,7 @@
         <li><a href="#lesson1">Lecture 1: What Is Data Mining?</a></li>
         <li><a href="#lesson2">Lecture 2: What Is R Programming?</a></li>
         <li><a href="#lesson3">Lecture 3: Introduction to Math Manipulations in R</a></li>
+        <li><a href="#lesson4">Lecture 4: Creating and Visualizing Dataframes in R</a></li>
       </ul>
     </nav>
   </section>
@@ -274,6 +275,80 @@ hist(scores)
 
   <div class="up-link"><a href="#top">🔝 Back to Top</a></div>
  </section>
+
+<section class="lesson" id="lesson4">
+<h1>📘Creating and Visualizing Dataframes in R</h1>
+
+  <h2>🧱 Part 1: Understanding and Creating a Dataframe</h2>
+  <p>A <strong>dataframe</strong> in R is a structured table where:</p>
+  <ul>
+    <li>Each column is a variable (e.g., name, age, score).</li>
+    <li>Each row is an observation (e.g., one student’s data).</li>
+    <li>Columns can hold different data types: numeric, character, logical, etc.</li>
+  </ul>
+
+  <h3>🔹 Structure of <code>data.frame()</code></h3>
+  <pre>data.frame(column1 = vector1, column2 = vector2, ...)</pre>
+  <p>All vectors must be the same length. Each vector becomes a column in the table.</p>
+
+  <h3>🔹 Example: Student Data</h3>
+  <pre>
+# Define vectors
+names <- c("Ali", "Sara", "John", "Lina")
+ages <- c(25, 30, 22, 28)
+scores <- c(88, 92, 75, 85)
+
+# Create dataframe
+students <- data.frame(Name = names, Age = ages, Score = scores)
+
+# View structure
+str(students)
+  </pre>
+
+  <h3>🔍 Output of <code>str(students)</code>:</h3>
+  <div class="output">
+'data.frame':   4 obs. of  3 variables:<br>
+ $ Name : chr  "Ali" "Sara" "John" "Lina"<br>
+ $ Age  : num  25 30 22 28<br>
+ $ Score: num  88 92 75 85
+  </div>
+
+  <h2>📊 Part 2: Visualizing Data in a Dataframe</h2>
+  <p>Once your data is organized, you can visualize it using built-in functions or libraries like <code>ggplot2</code>.</p>
+
+  <h3>🔹 1. Basic Scatter Plot</h3>
+  <pre>
+plot(students$Age, students$Score,
+     main = "Age vs Score",
+     xlab = "Age",
+     ylab = "Score",
+     col = "blue",
+     pch = 19)
+  </pre>
+  <p>Shows how age relates to score.</p>
+
+  <h3>🔹 2. Bar Plot</h3>
+  <pre>
+barplot(students$Score,
+        names.arg = students$Name,
+        col = "green",
+        main = "Student Scores",
+        ylab = "Score")
+  </pre>
+  <p>Displays each student’s score as a bar.</p>
+
+  <h3>🔹 3. Advanced Plot with <code>ggplot2</code></h3>
+  <pre>
+library(ggplot2)
+
+ggplot(students, aes(x = Name, y = Score, fill = Name)) +
+  geom_bar(stat = "identity") +
+  theme_minimal() +
+  labs(title = "Scores by Student", y = "Score")
+  </pre>
+  <p>Creates a clean, customizable bar chart.</p>
+
+</section>
   
   <footer>
     <p>© 2025 Mshari Aljumaie. All rights reserved.</p>
