@@ -115,6 +115,7 @@
         <li><a href="#lesson1">Lecture 1: What Is an Operating System?</a></li>
         <li><a href="#lesson2">Lecture 2: Linux Terminal Commands</a></li>
         <li><a href="#lesson3">Lecture 3: Editing Files in the Linux Terminal</a></li>
+        <li><a href="#lesson4">Lecture 4: Essential Linux Commands</a></li>
       </ul>
     </nav>
   </section>
@@ -365,6 +366,120 @@ nano hello.txt</code></pre>
 
   <div class="up-link"><a href="#top">🔝 Back to Top</a></div>
  </section>
+
+  <section class="lesson" id="lesson4">
+<h1>🖥️ Lecture: Essential Linux Commands – <code>rm</code>, <code>cp</code>, <code>mv</code>, and <code>tree</code></h1>
+
+  <h2>📌 1. <code>rm</code> – Remove Files or Directories</h2>
+  <p><strong>Purpose:</strong> Deletes files or directories.</p>
+  <p>🔹 <strong>Basic Usage:</strong></p>
+  <pre>rm filename.txt</pre>
+  <p>Deletes <code>filename.txt</code>.</p>
+
+  <p>🔹 <strong>Remove Multiple Files:</strong></p>
+  <pre>rm file1.txt file2.txt</pre>
+
+  <p>🔹 <strong>Remove a Directory and Its Contents:</strong></p>
+  <pre>rm -r foldername/</pre>
+
+  <div class="warning">
+    ⚠️ <strong>Warning:</strong> <code>rm</code> permanently deletes files. Use with caution!
+  </div>
+
+  <p>Add <code>-i</code> for confirmation before each deletion:</p>
+  <pre>rm -i important.txt</pre>
+
+  <h2>📌 2. <code>cp</code> – Copy Files or Directories</h2>
+  <p><strong>Purpose:</strong> Copies files or folders from one location to another.</p>
+
+  <p>🔹 <strong>Copy a File:</strong></p>
+  <pre>cp source.txt destination.txt</pre>
+
+  <p>🔹 <strong>Copy a File to a Directory:</strong></p>
+  <pre>cp notes.txt /home/user/Documents/</pre>
+
+  <p>🔹 <strong>Copy a Directory (Recursively):</strong></p>
+  <pre>cp -r folder1/ folder2/</pre>
+
+  <p>🔹 <strong>Add <code>-i</code> to confirm before overwriting:</strong></p>
+  <pre>cp -i file.txt backup.txt</pre>
+
+  <h2>📌 3. <code>mv</code> – Move or Rename Files</h2>
+  <p><strong>Purpose:</strong> Moves or renames files and directories.</p>
+
+  <p>🔹 <strong>Rename a File:</strong></p>
+  <pre>mv oldname.txt newname.txt</pre>
+
+  <p>🔹 <strong>Move a File to Another Directory:</strong></p>
+  <pre>mv report.pdf /home/user/Documents/</pre>
+
+  <p>🔹 <strong>Move and Rename:</strong></p>
+  <pre>mv draft.txt /home/user/Documents/final.txt</pre>
+
+  <p>🔹 <strong>Add <code>-i</code> to confirm before overwriting:</strong></p>
+  <pre>mv -i file.txt existing.txt</pre>
+
+  <h2>📌 4. <code>tree</code> – Visualize Directory Structure</h2>
+  <p><strong>Purpose:</strong> Displays directories and files in a tree-like format.</p>
+
+  <p>🔹 <strong>Basic Usage:</strong></p>
+  <pre>tree</pre>
+
+  <p>🔹 <strong>Show Tree of a Specific Directory:</strong></p>
+  <pre>tree /home/user/Documents</pre>
+
+  <p>🔹 <strong>Limit Depth of Tree:</strong></p>
+  <pre>tree -L 2</pre>
+
+  <p>🔹 <strong>Show Hidden Files:</strong></p>
+  <pre>tree -a</pre>
+
+  <div class="note">
+    💡 <strong>Note:</strong> You may need to install <code>tree</code> first using:<br/>
+    <code>sudo apt install tree</code> (Debian/Ubuntu)<br/>
+    <code>sudo yum install tree</code> (RHEL/CentOS)
+  </div>
+
+  <h2>🧠 Summary Table</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Command</th>
+        <th>Purpose</th>
+        <th>Common Flags</th>
+        <th>Example</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>rm</code></td>
+        <td>Delete files/directories</td>
+        <td><code>-r</code>, <code>-i</code></td>
+        <td><code>rm -r old_folder/</code></td>
+      </tr>
+      <tr>
+        <td><code>cp</code></td>
+        <td>Copy files/directories</td>
+        <td><code>-r</code>, <code>-i</code></td>
+        <td><code>cp -r src/ backup/</code></td>
+      </tr>
+      <tr>
+        <td><code>mv</code></td>
+        <td>Move or rename files</td>
+        <td><code>-i</code></td>
+        <td><code>mv old.txt new.txt</code></td>
+      </tr>
+      <tr>
+        <td><code>tree</code></td>
+        <td>Show folder structure</td>
+        <td><code>-L</code>, <code>-a</code></td>
+        <td><code>tree -L 2 /home/user/Documents</code></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  </section>
 
   
   <footer>
