@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GPA Calculator</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    label, select, input { margin: 5px 0; display: block; }
+    .course-inputs { margin-bottom: 15px; }
+    .result { font-weight: bold; margin-top: 20px; }
+  </style>
+</head>
+<body>
+
+  <h2>🎓 GPA Calculator</h2>
+
+  <label for="scale">Select GPA Scale:</label>
+  <select id="scale">
+    <option value="4">Out of 4</option>
+    <option value="5">Out of 5</option>
+  </select>
+
+  <label for="numCourses">Number of Courses:</label>
+  <input type="number" id="numCourses" min="1" max="20" />
+
+  <button onclick="generateCourseInputs()">Generate Course Fields</button>
+
+  <form id="courseForm" onsubmit="calculateGPA(event)">
+    <div id="courseInputs"></div>
+    <button type="submit">Calculate GPA</button>
+  </form>
+
+  <div class="result" id="gpaResult"></div>
+
+  <script>
+    function generateCourseInputs() {
+      const numCourses = parseInt(document.getElementById('numCourses').value);
+      const container = document.getElementById('courseInputs');
+      container.innerHTML = '';
+
+      for (let i = 1; i <= numCourses; i++) {
+        const div = document.createElement('div');
+        div.className = 'course-inputs';
+        div.innerHTML = `
+          <label>Course ${i} Grade:</label>
+          <input type="number" step="0.01" min="0" max="5" name="grade${i}" required />
+          <label>Course ${i} Credit Hours:</label>
+          <input type="number" step="0.5" min="0.5" max="6" name="credit${i}" required />
+        `;
+        container.appendChild(div);
+      }
+    }
+
+    function calculateGPA(event) {
+      event.preventDefault();
+      const scale = parseFloat(document.getElementById('scale').value);
+      const numCourses = parseInt(document.getElementById('numCourses').value);
+      let totalPoints = 0;
+      let totalCredits = 0;
+
+      for (let i = 1; i <= numCourses; i++) {
+        const grade = parseFloat(document.querySelector(`[name="grade${i}"]`).value);
+        const credit = parseFloat(document.querySelector(`[name="credit${i}"]`).value);
+        totalPoints += grade * credit;
+        totalCredits += credit;
+      }
+
+      const gpa = totalPoints / totalCredits;
+      document.getElementById('gpaResult').textContent =
+        `Your GPA (out of ${scale}): ${gpa.toFixed(2)}`;
+    }
+  </script>
+
+</body>
+</html>
