@@ -34,6 +34,20 @@
   <div class="result" id="gpaResult"></div>
 
   <script>
+    const gradeMap4 = {
+      "A+": 4.0, "A": 4.0, "A-": 3.7,
+      "B+": 3.3, "B": 3.0, "B-": 2.7,
+      "C+": 2.3, "C": 2.0, "C-": 1.7,
+      "D+": 1.3, "D": 1.0, "F": 0.0
+    };
+
+    const gradeMap5 = {
+      "A+": 5.0, "A": 5.0, "A-": 4.5,
+      "B+": 4.0, "B": 3.5, "B-": 3.0,
+      "C+": 2.5, "C": 2.0, "C-": 1.5,
+      "D+": 1.0, "D": 0.5, "F": 0.0
+    };
+
     function generateCourseInputs() {
       const numCourses = parseInt(document.getElementById('numCourses').value);
       const container = document.getElementById('courseInputs');
@@ -44,7 +58,21 @@
         div.className = 'course-inputs';
         div.innerHTML = `
           <label>Course ${i} Grade:</label>
-          <input type="number" step="0.01" min="0" max="5" name="grade${i}" required />
+          <select name="grade${i}" required>
+            <option value="">--Select Grade--</option>
+            <option value="A+">A+</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="F">F</option>
+          </select>
           <label>Course ${i} Credit Hours:</label>
           <input type="number" step="0.5" min="0.5" max="6" name="credit${i}" required />
         `;
@@ -56,13 +84,16 @@
       event.preventDefault();
       const scale = parseFloat(document.getElementById('scale').value);
       const numCourses = parseInt(document.getElementById('numCourses').value);
+      const gradeMap = scale === 5 ? gradeMap5 : gradeMap4;
+
       let totalPoints = 0;
       let totalCredits = 0;
 
       for (let i = 1; i <= numCourses; i++) {
-        const grade = parseFloat(document.querySelector(`[name="grade${i}"]`).value);
+        const grade = document.querySelector(`[name="grade${i}"]`).value;
         const credit = parseFloat(document.querySelector(`[name="credit${i}"]`).value);
-        totalPoints += grade * credit;
+        const point = gradeMap[grade] || 0;
+        totalPoints += point * credit;
         totalCredits += credit;
       }
 
