@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fundamentals of Database Midterm Exam</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .hidden { display: none; }
+    .question { margin-bottom: 15px; }
+    .timer { font-weight: bold; color: red; margin-bottom: 20px; }
+    input[type="text"], input[type="password"] { padding: 8px; width: 200px; }
+    button { padding: 8px 16px; margin-top: 10px; }
+    #exam-form { max-width: 800px; }
+  </style>
+</head>
+<body>
+
+  <!-- Login Section -->
+  <div id="login-section">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Exam Code" /><br/>
+    <input type="password" id="password" placeholder="Password" /><br/>
+    <button onclick="login()">Login</button>
+  </div>
+
+  <!-- Exam Section -->
+  <div id="exam-section" class="hidden">
+    <div class="timer" id="timer">Time Remaining: 2:00:00</div>
+    <form id="exam-form">
+      <h2>Database Midterm Questions</h2>
+      <div id="questions-container"></div>
+      <button type="submit">Submit Exam</button>
+    </form>
+  </div>
+
+  <script>
+    const students = {
+      "DB1": "Juman999",
+      "student002": "pass456",
+      "student003": "pass789"
+    };
+
+    const loginSection = document.getElementById('login-section');
+    const examSection = document.getElementById('exam-section');
+    const questionsContainer = document.getElementById('questions-container');
+    const timerDisplay = document.getElementById('timer');
+    let currentUser = "";
+
+    function login() {
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      if (students[username] && students[username] === password) {
+        currentUser = username;
+        loginSection.classList.add('hidden');
+        examSection.classList.remove('hidden');
+        startTimer(2 * 60 * 60);
+        generateQuestions();
+      } else {
+        alert("Invalid credentials. Please try again.");
+      }
+    }
+
+    function generateQuestions() {
+      const questions = [
+        { id: "q1", text: "Which SQL statement is used to create a new table?", options: ["CREATE TABLE", "MAKE TABLE", "NEW TABLE", "TABLE CREATE"] },
+        { id: "q2", text: "Which data type is best for storing long text paragraphs?", options: ["TEXT", "VARCHAR", "CHAR", "STRING"] },
+        { id: "q3", text: "What is the main difference between VARCHAR and CHAR?", options: ["CHAR is variable-length, VARCHAR is fixed", "VARCHAR is variable-length, CHAR is fixed", "Both are fixed-length", "Both are variable-length"] },
+        { id: "q4", text: "Which SQL statement is used to insert data into a table?", options: ["ADD DATA", "INSERT INTO", "PUT INTO", "SAVE RECORD"] },
+        { id: "q5", text: "Which clause is used to retrieve data from a table?", options: ["GET", "FETCH", "SELECT", "SHOW"] },
+        { id: "q6", text: "Which of the following is NOT a valid SQL data type?", options: ["BOOLEAN", "FLOAT", "IMAGE", "DATE"] },
+        { id: "q7", text: "Which SQL statement retrieves all columns from a table named 'students'?", options: ["SELECT * FROM students", "GET ALL FROM students", "SHOW students", "FETCH * FROM students"] }
+      ];
+
+      questions.forEach((q, i) => {
+        const div = document.createElement('div');
+        div.className = 'question';
+        div.innerHTML = `<label>Question ${i + 1}: ${q.text}</label><br/>` +
+          q.options.map(opt =>
+            `<input type="radio" name="${q.id}" value="${opt}" required /> ${opt}<br/>`
+          ).join('');
+        questionsContainer.appendChild(div);
+      });
+    }
+
+    function startTimer(duration) {
+      let time = duration;
+      const interval = setInterval(() => {
+        const hours = Math.floor(time / 3600);
+        const minutes = Math.floor((time % 3600) / 60);
+        const seconds = time % 60;
+        timerDisplay.textContent = `Time Remaining: ${hours}:${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
+        if (--time < 0) {
+          clearInterval(interval);
+          alert("Time's up! Submitting your exam.");
+          document.getElementById('exam-form').requestSubmit();
+        }
+      }, 1000);
+    }
+
+    function calculateScore(answers) {
+      const correctAnswers = {
+        q1: "CREATE TABLE",
+        q2: "TEXT",
+        q3: "VARCHAR is variable-length, CHAR is fixed",
+        q4: "INSERT INTO",
+        q5: "SELECT",
+        q6: "IMAGE",
+        q7: "SELECT * FROM students"
+      };
+      let score = 3;
+      for (let key in correctAnswers) {
+        if (answers[key] === correctAnswers[key]) {
+          score++;
+        }
+      }
+      return score;
+    }
+
+    document.getElementById('exam-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      const answers = {};
+      formData.forEach((value, key) => {
+        answers[key] = value;
+      });
+
+      const score = calculateScore(answers);
+      localStorage.setItem(`exam_${currentUser}`, JSON.stringify(answers));
+
+      fetch('/submit-result', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          studentId: currentUser,
+          timestamp: new Date().toISOString(),
+          score: score,
+          answers: answers
+        })
+      }).then(res => {
+        if (!res.ok) {
+          console.error("Server error while saving result.");
+        }
+      }).catch(err => {
+        console.error("Network error:", err);
+      });
+
+      alert(`Exam submitted successfully for ${currentUser}! Score: ${score}/10`);
+      this.reset();
+      examSection.classList.add('hidden');
+    });
+  </script>
+</body>
+</html>
