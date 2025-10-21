@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Data Mining & R Programming Midterm</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .hidden { display: none; }
+    .question { margin-bottom: 15px; }
+    .timer { font-weight: bold; color: red; margin-bottom: 20px; }
+    input[type="text"], input[type="password"] { padding: 8px; width: 200px; }
+    button { padding: 8px 16px; margin-top: 10px; }
+    #exam-form { max-width: 800px; }
+  </style>
+</head>
+<body>
+
+  <!-- Login Section -->
+  <div id="login-section">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Exam Code" /><br/>
+    <input type="password" id="password" placeholder="Password" /><br/>
+    <button onclick="login()">Login</button>
+  </div>
+
+  <!-- Exam Section -->
+  <div id="exam-section" class="hidden">
+    <div class="timer" id="timer">Time Remaining: 2:00:00</div>
+    <form id="exam-form">
+      <h2>Midterm Questions</h2>
+      <div id="questions-container"></div>
+      <button type="submit">Submit Exam</button>
+    </form>
+  </div>
+
+  <script>
+    const students = {
+      "DB1": "Juman999",
+      "student002": "pass456",
+      "student003": "pass789"
+    };
+
+    const questions = [
+      { id: "q1", text: "What is the main goal of data mining?", options: ["To store data", "To visualize data", "To uncover hidden patterns", "To delete old records"], answer: "To uncover hidden patterns" },
+      { id: "q2", text: "Which technique assigns data to predefined categories?", options: ["Clustering", "Regression", "Classification", "Association Rules"], answer: "Classification" },
+      { id: "q3", text: "Which technique is used to group similar data points?", options: ["Regression", "Clustering", "Classification", "Anomaly Detection"], answer: "Clustering" },
+      { id: "q4", text: "Which technique predicts numeric values?", options: ["Classification", "Regression", "Clustering", "Association Rules"], answer: "Regression" },
+      { id: "q5", text: "Which technique finds relationships between variables?", options: ["Anomaly Detection", "Association Rules", "Clustering", "Classification"], answer: "Association Rules" },
+      { id: "q6", text: "Which technique identifies unusual data points?", options: ["Regression", "Clustering", "Anomaly Detection", "Association Rules"], answer: "Anomaly Detection" },
+      { id: "q7", text: "What does ETL stand for in data preparation?", options: ["Extract, Transform, Load", "Evaluate, Test, Learn", "Edit, Transfer, Link", "Encode, Translate, Label"], answer: "Extract, Transform, Load" },
+      { id: "q8", text: "Which phase checks if insights are useful?", options: ["Modeling", "Evaluation", "Deployment", "Data Collection"], answer: "Evaluation" },
+      { id: "q9", text: "Which application uses data mining to detect fraud?", options: ["Retail", "Marketing", "Finance", "Healthcare"], answer: "Finance" },
+      { id: "q10", text: "What is R primarily used for?", options: ["Web development", "Statistical analysis", "Game design", "Database management"], answer: "Statistical analysis" },
+      { id: "q11", text: "Which R function calculates the mean of a vector?", options: ["average()", "mean()", "calcMean()", "getMean()"], answer: "mean()" },
+      { id: "q12", text: "Which R function shows a quick overview of a vector?", options: ["summary()", "overview()", "describe()", "info()"], answer: "summary()" },
+      { id: "q13", text: "Which R function plots a histogram?", options: ["plot()", "hist()", "barplot()", "graph()"], answer: "hist()" },
+      { id: "q14", text: "Which site lets you run R code online?", options: ["RStudio.com", "RDrr.io", "RunR.net", "RCloud.org"], answer: "RDrr.io" }
+    ];
+
+    const loginSection = document.getElementById('login-section');
+    const examSection = document.getElementById('exam-section');
+    const questionsContainer = document.getElementById('questions-container');
+    const timerDisplay = document.getElementById('timer');
+    let currentUser = "";
+    let selectedQuestions = [];
+
+    function login() {
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      if (students[username] && students[username] === password) {
+        currentUser = username;
+        loginSection.classList.add('hidden');
+        examSection.classList.remove('hidden');
+        startTimer(2 * 60 * 60);
+        generateQuestions();
+      } else {
+        alert("Invalid credentials. Please try again.");
+      }
+    }
+
+    function generateQuestions() {
+      const shuffled = [...questions].sort(() => 0.5 - Math.random());
+      selectedQuestions = shuffled.slice(0, 7);
+
+      selectedQuestions.forEach((q, i) => {
+        const div = document.createElement('div');
+        div.className = 'question';
+        div.innerHTML = `<label>Question ${i + 1}: ${q.text}</label><br/>` +
+          q.options.map(opt =>
+            `<input type="radio" name="${q.id}" value="${opt}" required /> ${opt}<br/>`
+          ).join('');
+        questionsContainer.appendChild(div);
+      });
+    }
+
+    function startTimer(duration) {
+      let time = duration;
+      const interval = setInterval(() => {
+        const hours = Math.floor(time / 3600);
+        const minutes = Math.floor((time % 3600) / 60);
+        const seconds = time % 60;
+        timerDisplay.textContent = `Time Remaining: ${hours}:${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
+        if (--time < 0) {
+          clearInterval(interval);
+          alert("Time's up! Submitting your exam.");
+          document.getElementById('exam-form').requestSubmit();
+        }
+      }, 1000);
+    }
+
+    function calculateScore(answers) {
+      let score = 0;
+      selectedQuestions.forEach(q => {
+        if (answers[q.id] === q.answer) {
+          score++;
+        }
+      });
+      return score;
+    }
+
+    document.getElementById('exam-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      const answers = {};
+      formData.forEach((value, key) => {
+        answers[key] = value;
+      });
+
+      const score = calculateScore(answers);
+      localStorage.setItem(`exam_${currentUser}`, JSON.stringify(answers));
+
+      fetch('/submit-result', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          studentId: currentUser,
+          timestamp: new Date().toISOString(),
+          score: score,
+          answers: answers
+        })
+      }).then(res => {
+        if (!res.ok) {
+          console.error("Server error while saving result.");
+        }
+      }).catch(err => {
+        console.error("Network error:", err);
+      });
+
+      alert(`Exam submitted successfully for ${currentUser}! Score: ${score}/7`);
+      this.reset();
+      examSection.classList.add('hidden');
+    });
+  </script>
+</body>
+</html>
