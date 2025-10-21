@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Network Security Midterm Exam</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .hidden { display: none; }
+    .question { margin-bottom: 15px; }
+    .timer { font-weight: bold; color: red; margin-bottom: 20px; }
+    input[type="text"], input[type="password"] { padding: 8px; width: 200px; }
+    button { padding: 8px 16px; margin-top: 10px; }
+    #exam-form { max-width: 800px; }
+  </style>
+</head>
+<body>
+
+  <!-- Login Section -->
+  <div id="login-section">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Exam Code" /><br/>
+    <input type="password" id="password" placeholder="Password" /><br/>
+    <button onclick="login()">Login</button>
+  </div>
+
+  <!-- Exam Section -->
+  <div id="exam-section" class="hidden">
+    <div class="timer" id="timer">Time Remaining: 2:00:00</div>
+    <form id="exam-form">
+      <h2>Network Security Midterm Questions</h2>
+      <div id="questions-container"></div>
+      <button type="submit">Submit Exam</button>
+    </form>
+  </div>
+
+  <script>
+    const students = {
+      "DB1": "Juman999",
+      "student002": "pass456",
+      "student003": "pass789"
+    };
+
+    const questions = [
+      { id: "q1", text: "What does the CIA Triad stand for in network security?", options: ["Confidentiality, Integrity, Availability", "Control, Isolation, Access", "Cyber, Internet, Authentication", "Confidentiality, Identity, Access"], answer: "Confidentiality, Integrity, Availability" },
+      { id: "q2", text: "Which threat involves fake emails or websites?", options: ["Malware", "Phishing", "DoS", "MitM"], answer: "Phishing" },
+      { id: "q3", text: "What does a firewall do?", options: ["Encrypts data", "Detects viruses", "Blocks unauthorized connections", "Stores passwords"], answer: "Blocks unauthorized connections" },
+      { id: "q4", text: "Which tool monitors for suspicious activity?", options: ["IDS", "Firewall", "Antivirus", "Access Control"], answer: "IDS" },
+      { id: "q5", text: "Which type of security protects Wi-Fi networks?", options: ["Cloud Security", "Wireless Security", "Software Security", "Physical Security"], answer: "Wireless Security" },
+      { id: "q6", text: "What is the shortcut to open Task Manager?", options: ["Ctrl + Alt + Del", "Ctrl + Shift + Esc", "Alt + F4", "Ctrl + Esc"], answer: "Ctrl + Shift + Esc" },
+      { id: "q7", text: "Which Windows tool acts as a gatekeeper for network traffic?", options: ["BitLocker", "Windows Defender Firewall", "Credential Manager", "Windows Hello"], answer: "Windows Defender Firewall" },
+      { id: "q8", text: "Which practice helps protect accounts?", options: ["Using short passwords", "Disabling firewall", "Using strong passwords", "Sharing credentials"], answer: "Using strong passwords" },
+      { id: "q9", text: "Which PowerShell command shows network adapters?", options: ["Get-NetIPAddress", "Get-NetAdapter", "Test-NetConnection", "Clear-DnsClientCache"], answer: "Get-NetAdapter" },
+      { id: "q10", text: "Which PowerShell command flushes DNS cache?", options: ["Set-DnsClientServerAddress", "Clear-DnsClientCache", "New-NetIPAddress", "Get-NetFirewallRule"], answer: "Clear-DnsClientCache" },
+      { id: "q11", text: "Which CMD command checks internet connectivity?", options: ["ping", "ipconfig", "netstat", "tracert"], answer: "ping" },
+      { id: "q12", text: "Which CMD command shows IP configuration?", options: ["ipconfig", "ping", "netstat", "nslookup"], answer: "ipconfig" },
+      { id: "q13", text: "Which CMD command lists active connections?", options: ["getmac", "netstat -a", "arp -a", "route print"], answer: "netstat -a" },
+      { id: "q14", text: "Which CMD command shows MAC addresses?", options: ["getmac", "ipconfig /all", "arp -a", "netstat -b"], answer: "getmac" }
+    ];
+
+    const loginSection = document.getElementById('login-section');
+    const examSection = document.getElementById('exam-section');
+    const questionsContainer = document.getElementById('questions-container');
+    const timerDisplay = document.getElementById('timer');
+    let currentUser = "";
+    let selectedQuestions = [];
+
+    function login() {
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      if (students[username] && students[username] === password) {
+        currentUser = username;
+        loginSection.classList.add('hidden');
+        examSection.classList.remove('hidden');
+        startTimer(2 * 60 * 60);
+        generateQuestions();
+      } else {
+        alert("Invalid credentials. Please try again.");
+      }
+    }
+
+    function generateQuestions() {
+      const shuffled = [...questions].sort(() => 0.5 - Math.random());
+      selectedQuestions = shuffled.slice(0, 7);
+
+      selectedQuestions.forEach((q, i) => {
+        const div = document.createElement('div');
+        div.className = 'question';
+        div.innerHTML = `<label>Question ${i + 1}: ${q.text}</label><br/>` +
+          q.options.map(opt =>
+            `<input type="radio" name="${q.id}" value="${opt}" required /> ${opt}<br/>`
+          ).join('');
+        questionsContainer.appendChild(div);
+      });
+    }
+
+    function startTimer(duration) {
+      let time = duration;
+      const interval = setInterval(() => {
+        const hours = Math.floor(time / 3600);
+        const minutes = Math.floor((time % 3600) / 60);
+        const seconds = time % 60;
+        timerDisplay.textContent = `Time Remaining: ${hours}:${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
+        if (--time < 0) {
+          clearInterval(interval);
+          alert("Time's up! Submitting your exam.");
+          document.getElementById('exam-form').requestSubmit();
+        }
+      }, 1000);
+    }
+
+    function calculateScore(answers) {
+      let score = 0;
+      selectedQuestions.forEach(q => {
+        if (answers[q.id] === q.answer) {
+          score++;
+        }
+      });
+      return score;
+    }
+
+    document.getElementById('exam-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      const answers = {};
+      formData.forEach((value, key) => {
+        answers[key] = value;
+      });
+
+      const score = calculateScore(answers);
+      localStorage.setItem(`exam_${currentUser}`, JSON.stringify(answers));
+
+      fetch('/submit-result', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          studentId: currentUser,
+          timestamp: new Date().toISOString(),
+          score: score,
+          answers: answers
+        })
+      }).then(res => {
+        if (!res.ok) {
+          console.error("Server error while saving result.");
+        }
+      }).catch(err => {
+        console.error("Network error:", err);
+      });
+
+      alert(`Exam submitted successfully for ${currentUser}! Score: ${score}/7`);
+      this.reset();
+      examSection.classList.add('hidden');
+    });
+  </script>
+</body>
+</html>
