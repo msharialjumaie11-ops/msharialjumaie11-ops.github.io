@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Data Mining Course</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    header {
+      background-color: #71274b;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+
+    header p {
+      margin-top: 10px;
+      font-size: 1.1em;
+    }
+
+    section {
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+      background-color: white;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #71274b;
+      border-bottom: 2px solid #71274b;
+      padding-bottom: 5px;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    nav ul li {
+      margin: 10px 0;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #71274b;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #0f3c13;
+    }
+
+    .lesson h3 {
+      color: #444;
+    }
+
+    .lesson p {
+      margin-top: 10px;
+    }
+
+    .up-link {
+      text-align: right;
+      margin-top: 20px;
+    }
+
+    .up-link a {
+      text-decoration: none;
+      font-size: 18px;
+      color: #71274b;
+      transition: color 0.3s ease;
+    }
+
+    .up-link a:hover {
+      color: #0f3c13;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: #71274b;
+      color: white;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+
+  <header id="top">
+    <h1>Data Mining – <b>Practical Part</b></h1>
+  </header>
+
+  <section>
+    <h2>Lectures</h2>
+    <nav>
+      <ul>
+        <li><a href="#lesson1">Lecture 1: What Is XML?</a></li>
+        <li><a href="#lesson2">Lecture 2: Attributes, Nesting & Real-World Use</a></li>
+      </ul>
+    </nav>
+  </section>
+
+ <section class="lesson" id="lesson1">
+   <h2>🧠 What Is XML?</h2>
+  <p>XML stands for <strong>eXtensible Markup Language</strong>. It’s a way to store and transport data using a structured, human-readable format. Unlike HTML, which focuses on displaying content, XML focuses on describing data.</p>
+  <p>Think of XML as a digital filing cabinet: each piece of data is labeled and nested in a way that makes it easy to organize, search, and share.</p>
+
+  <h2>📦 Why Use XML?</h2>
+  <ul>
+    <li>✅ <strong>Platform-independent</strong>: Works across different systems and applications.</li>
+    <li>✅ <strong>Self-descriptive</strong>: Tags describe the data (e.g., <code>&lt;name&gt;Ali&lt;/name&gt;</code>).</li>
+    <li>✅ <strong>Widely supported</strong>: Used in web services, configuration files, and data exchange.</li>
+    <li>✅ <strong>Customizable</strong>: You define your own tags based on your needs.</li>
+  </ul>
+
+  <h2>🧱 Basic XML Structure</h2>
+  <p>Here’s a simple example:</p>
+  <pre>
+&lt;student&gt;
+  &lt;name&gt;Ali&lt;/name&gt;
+  &lt;age&gt;21&lt;/age&gt;
+  &lt;major&gt;Computer Science&lt;/major&gt;
+&lt;/student&gt;
+  </pre>
+
+  <h3>Key Rules:</h3>
+  <ul>
+    <li>Every opening tag must have a closing tag (<code>&lt;name&gt;...&lt;/name&gt;</code>)</li>
+    <li>Tags must be properly nested</li>
+    <li>There must be one root element (like <code>&lt;student&gt;</code> above)</li>
+    <li>Attribute values must be quoted</li>
+  </ul>
+
+  <h2>🔍 XML vs HTML</h2>
+  <table>
+    <tr>
+      <th>Feature</th>
+      <th>XML</th>
+      <th>HTML</th>
+    </tr>
+    <tr>
+      <td>Purpose</td>
+      <td>Data storage and transport</td>
+      <td>Data display in browsers</td>
+    </tr>
+    <tr>
+      <td>Tags</td>
+      <td>Custom, user-defined</td>
+      <td>Predefined (e.g., &lt;div&gt;)</td>
+    </tr>
+    <tr>
+      <td>Strictness</td>
+      <td>Very strict (well-formed)</td>
+      <td>More forgiving</td>
+    </tr>
+    <tr>
+      <td>Readability</td>
+      <td>Human-readable</td>
+      <td>Human-readable</td>
+    </tr>
+  </table>
+
+  <h2>🛠️ Common Uses of XML</h2>
+  <ul>
+    <li>📁 Configuration files (e.g., Android <code>AndroidManifest.xml</code>)</li>
+    <li>🔄 Data exchange between systems (e.g., APIs, SOAP)</li>
+    <li>📊 Storing structured data (e.g., resumes, invoices)</li>
+    <li>🌐 Web services (e.g., RSS feeds)</li>
+  </ul>
+ </section>
+  
+  <section class="lesson" id="lesson2">
+  <h2>🧠 XML Lecture 2: Attributes, Nesting & Real-World Use</h2>
+
+  <h3>🔍 Recap: What Is XML?</h3>
+  <p>XML (eXtensible Markup Language) is used to store and transport data in a structured, readable format. It uses custom tags to describe data, making it ideal for configuration files, data exchange, and more.</p>
+
+  <h3>🧱 1. XML Attributes vs Elements</h3>
+  <p>In XML, data can be stored in two ways:</p>
+  <strong>As elements:</strong>
+  <pre>
+&lt;student&gt;
+  &lt;name&gt;Ali&lt;/name&gt;
+  &lt;age&gt;21&lt;/age&gt;
+&lt;/student&gt;
+  </pre>
+
+  <strong>As attributes:</strong>
+  <pre>
+&lt;student name="Ali" age="21" /&gt;
+  </pre>
+
+  <p><strong>✅ When to Use Attributes:</strong></p>
+  <ul>
+    <li>For metadata or properties that describe the element</li>
+    <li>When values are short and don’t need nesting</li>
+  </ul>
+
+  <h3>🌳 2. Nested XML Structures</h3>
+  <p>XML supports <strong>hierarchical data</strong>, meaning elements can contain other elements.</p>
+  <pre>
+&lt;class&gt;
+  &lt;student&gt;
+    &lt;name&gt;Ali&lt;/name&gt;
+    &lt;grade&gt;A&lt;/grade&gt;
+  &lt;/student&gt;
+  &lt;student&gt;
+    &lt;name&gt;Sara&lt;/name&gt;
+    &lt;grade&gt;B+&lt;/grade&gt;
+  &lt;/student&gt;
+&lt;/class&gt;
+  </pre>
+
+  <h3>🛠️ 3. Real-World XML Applications</h3>
+  <table>
+    <tr>
+      <th>Use Case</th>
+      <th>Example</th>
+    </tr>
+    <tr>
+      <td>📱 Mobile Apps</td>
+      <td>Android uses XML for layouts and manifests</td>
+    </tr>
+    <tr>
+      <td>🌐 Web Services</td>
+      <td>RSS feeds, SOAP APIs</td>
+    </tr>
+    <tr>
+      <td>⚙️ Config Files</td>
+      <td>App settings, user preferences</td>
+    </tr>
+    <tr>
+      <td>📊 Data Exchange</td>
+      <td>Between systems (e.g., invoices, resumes)</td>
+    </tr>
+  </table>
+
+  <h3>🧪 4. XML Validation</h3>
+  <p>To ensure your XML is correct:</p>
+  <ul>
+    <li>Use online validators like <a href="https://codebeautify.org/xmlvalidator" target="_blank">Code Beautify XML Validator</a></li>
+    <li>Check for:
+      <ul>
+        <li>One root element</li>
+        <li>Proper nesting</li>
+        <li>Matching opening/closing tags</li>
+        <li>Quoted attribute values</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3>🧠 Tip for Students</h3>
+  <p>Encourage them to:</p>
+  <ul>
+    <li>Create XML for something fun (e.g., favorite foods, game characters)</li>
+    <li>Use both elements and attributes</li>
+    <li>Validate and display it using a simple HTML viewer</li>
+  </ul>
+  </section>
+  <footer>
+    <p>© 2025 Mshari Aljumaie. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
