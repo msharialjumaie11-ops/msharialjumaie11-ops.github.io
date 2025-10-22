@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Networking & IP Address Midterm</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .hidden { display: none; }
+    .question { margin-bottom: 15px; }
+    .timer { font-weight: bold; color: red; margin-bottom: 20px; }
+    input[type="text"], input[type="password"] { padding: 8px; width: 200px; }
+    button { padding: 8px 16px; margin-top: 10px; }
+    #exam-form { max-width: 800px; }
+  </style>
+</head>
+<body>
+
+  <!-- Login Section -->
+  <div id="login-section">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Exam Code" /><br/>
+    <input type="password" id="password" placeholder="Password" /><br/>
+    <button onclick="login()">Login</button>
+  </div>
+
+  <!-- Exam Section -->
+  <div id="exam-section" class="hidden">
+    <div class="timer" id="timer">Time Remaining: 2:00:00</div>
+    <form id="exam-form">
+      <h2>Midterm Questions</h2>
+      <div id="questions-container"></div>
+      <button type="submit">Submit Exam</button>
+    </form>
+  </div>
+
+  <script>
+    const students = {
+      "Networking": "Mshari999",
+      "student002": "net456",
+      "student003": "ip789"
+    };
+
+    const questions = [
+      { id: "q1", text: "Which connector is commonly used with Ethernet cables?", options: ["BNC", "RJ45", "SC", "SMA"], answer: "RJ45" },
+      { id: "q2", text: "What type of cable transmits data using light pulses?", options: ["Coaxial", "Ethernet", "Fiber Optic", "HDMI"], answer: "Fiber Optic" },
+      { id: "q3", text: "Which IP address class is typically used for small networks like home LANs?", options: ["Class A", "Class B", "Class C", "Class D"], answer: "Class C" },
+      { id: "q4", text: "What is the correct wire color for pin 1 in the T568B wiring order?", options: ["Orange", "White/Green", "White/Orange", "Blue"], answer: "White/Orange" },
+      { id: "q5", text: "Which cable type includes a central copper conductor and a metallic shield?", options: ["Ethernet", "Coaxial", "Fiber Optic", "HDMI"], answer: "Coaxial" },
+      { id: "q6", text: "Which IP address class is reserved for experimental use?", options: ["Class D", "Class E", "Class B", "Class C"], answer: "Class E" },
+      { id: "q7", text: "What is the default subnet mask for Class B IP addresses?", options: ["255.0.0.0", "255.255.255.0", "255.255.0.0", "255.255.255.255"], answer: "255.255.0.0" },
+      { id: "q8", text: "Which cable is ideal for stable, high-speed internet in homes and offices?", options: ["Coaxial", "Fiber Optic", "Ethernet", "USB"], answer: "Ethernet" },
+      { id: "q9", text: "Which connector is used with coaxial cables?", options: ["RJ45", "LC", "BNC", "SC"], answer: "BNC" },
+      { id: "q10", text: "Which IP class supports multicast traffic?", options: ["Class A", "Class C", "Class D", "Class E"], answer: "Class D" },
+      { id: "q11", text: "What is the structure of a coaxial cable?", options: ["Twisted pairs", "Glass core", "Copper conductor with shield", "Plastic ribbon"], answer: "Copper conductor with shield" },
+      { id: "q12", text: "Which IP class is used by very large organizations or ISPs?", options: ["Class A", "Class B", "Class C", "Class D"], answer: "Class A" },
+      { id: "q13", text: "Which fiber optic type is used for long-distance communication?", options: ["Multimode", "Single-mode", "Cat6", "Coaxial"], answer: "Single-mode" },
+      { id: "q14", text: "Which private IP range belongs to Class C?", options: ["10.0.0.0 – 10.255.255.255", "172.16.0.0 – 172.31.255.255", "192.168.0.0 – 192.168.255.255", "224.0.0.0 – 239.255.255.255"], answer: "192.168.0.0 – 192.168.255.255" }
+    ];
+
+    const loginSection = document.getElementById('login-section');
+    const examSection = document.getElementById('exam-section');
+    const questionsContainer = document.getElementById('questions-container');
+    const timerDisplay = document.getElementById('timer');
+    let currentUser = "";
+    let selectedQuestions = [];
+
+    function login() {
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      if (students[username] && students[username] === password) {
+        currentUser = username;
+        loginSection.classList.add('hidden');
+        examSection.classList.remove('hidden');
+        startTimer(2 * 60 * 60);
+        generateQuestions();
+      } else {
+        alert("Invalid credentials. Please try again.");
+      }
+    }
+
+    function generateQuestions() {
+      const shuffled = [...questions].sort(() => 0.5 - Math.random());
+      selectedQuestions = shuffled.slice(0, 7);
+
+      selectedQuestions.forEach((q, i) => {
+        const div = document.createElement('div');
+        div.className = 'question';
+        div.innerHTML = `<label>Question ${i + 1}: ${q.text}</label><br/>` +
+          q.options.map(opt =>
+            `<input type="radio" name="${q.id}" value="${opt}" required /> ${opt}<br/>`
+          ).join('');
+        questionsContainer.appendChild(div);
+      });
+    }
+
+    function startTimer(duration) {
+      let time = duration;
+      const interval = setInterval(() => {
+        const hours = Math.floor(time / 3600);
+        const minutes = Math.floor((time % 3600) / 60);
+        const seconds = time % 60;
+        timerDisplay.textContent = `Time Remaining: ${hours}:${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
+        if (--time < 0) {
+          clearInterval(interval);
+          alert("Time's up! Submitting your exam.");
+          document.getElementById('exam-form').requestSubmit();
+        }
+      }, 1000);
+    }
+
+    function calculateScore(answers) {
+      let score = 0;
+      selectedQuestions.forEach(q => {
+        if (answers[q.id] === q.answer) {
+          score++;
+        }
+      });
+      return score;
+    }
+
+    document.getElementById('exam-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      const answers = {};
+      formData.forEach((value, key) => {
+        answers[key] = value;
+      });
+
+      const score = calculateScore(answers);
+      localStorage.setItem(`exam_${currentUser}`, JSON.stringify(answers));
+
+      fetch('/submit-result', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          studentId: currentUser,
+          timestamp: new Date().toISOString(),
+          score: score,
+          answers: answers
+        })
+      }).then(res => {
+        if (!res.ok) {
+          console.error("Server error while saving result.");
+        }
+      }).catch(err => {
+        console.error("Network error:", err);
+      });
+
+      alert(`Exam submitted successfully for ${currentUser}! Score: ${score}/7`);
+      this.reset();
+      examSection.classList.add('hidden');
+    });
+  </script>
+</body>
+</html>
