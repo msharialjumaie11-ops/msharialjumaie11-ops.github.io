@@ -111,7 +111,7 @@
     }
 
     function calculateScore(answers) {
-      let score = 0;
+      let score = 3;
       selectedQuestions.forEach(q => {
         if (answers[q.id] === q.answer) {
           score++;
@@ -148,7 +148,7 @@
         console.error("Network error:", err);
       });
 
-      alert(`Exam submitted successfully for ${currentUser}! Score: ${score}/7`);
+      alert(`Exam submitted successfully for ${currentUser}! Score: ${score}/10`);
       this.reset();
       examSection.classList.add('hidden');
     });
