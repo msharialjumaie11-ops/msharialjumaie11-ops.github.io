@@ -117,6 +117,7 @@
         <li><a href="#lesson3">Lecture 3: Creating Table in SQL</a></li>
         <li><a href="#lesson4">Lecture 4: Inserting Data into a Table</a></li>
         <li><a href="#lesson5">Lecture 5: SQL Basics: UPDATE and DELETE Statements</a></li>
+        <li><a href="#lesson6">SQL Task: Create, Insert, Update, Delete</li>
       </ul>
     </nav>
   </section>
@@ -400,6 +401,62 @@ VALUES
   </code>
   <p class="note">⚠️ Again, never forget the WHERE clause unless you intend to delete all records.</p>
 </section>
+<section class="lesson" id="lesson6">
+
+
+  <h2>🧪 SQL Task: Create, Insert, Update, and Delete</h2>
+
+  <div class="step">
+    <h3>🧩 Step 1: Create a Table</h3>
+    <p>Create a table called <strong>students</strong> with three columns: <code>id</code>, <code>name</code>, and <code>grade</code>.</p>
+    <code>
+CREATE TABLE students (<br>
+  &nbsp;&nbsp;id INT PRIMARY KEY,<br>
+  &nbsp;&nbsp;name VARCHAR(50),<br>
+  &nbsp;&nbsp;grade VARCHAR(2)<br>
+);
+    </code>
+  </div>
+
+  <div class="step">
+    <h3>✍️ Step 2: Insert 4 Records</h3>
+    <p>Add four students to the table.</p>
+    <code>
+INSERT INTO students (id, name, grade) VALUES (1, 'Aisha', 'B');<br>
+INSERT INTO students (id, name, grade) VALUES (2, 'Khalid', 'C');<br>
+INSERT INTO students (id, name, grade) VALUES (3, 'Fatimah', 'A');<br>
+INSERT INTO students (id, name, grade) VALUES (4, 'Salem', 'B');
+    </code>
+  </div>
+
+  <div class="step">
+    <h3>🔄 Step 3: Update One Record</h3>
+    <p>Change Khalid’s grade from <code>C</code> to <code>B+</code>.</p>
+    <code>
+UPDATE students<br>
+SET grade = 'B+'<br>
+WHERE name = 'Khalid';
+    </code>
+  </div>
+
+  <div class="step">
+    <h3>🧹 Step 4: Delete One Record</h3>
+    <p>Remove Salem from the table.</p>
+    <code>
+DELETE FROM students<br>
+WHERE name = 'Salem';
+    </code>
+  </div>
+
+  <div class="step">
+    <h3>✅ Final Tip for Students</h3>
+    <p class="tip">Encourage students to run the following after each step to see the changes live:</p>
+    <code>
+SELECT * FROM students;
+    </code>
+  </div>
+</section>
+  
   <footer>
     <p>© 2025 Mshari Aljumaie. All rights reserved.</p>
   </footer>
