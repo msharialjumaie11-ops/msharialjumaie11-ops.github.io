@@ -116,6 +116,7 @@
         <li><a href="#lesson2">Lecture 2: Linux Terminal Commands</a></li>
         <li><a href="#lesson3">Lecture 3: Editing Files in the Linux Terminal</a></li>
         <li><a href="#lesson4">Lecture 4: Essential Linux Commands</a></li>
+        <li><a href="#lesson5">Lecture 5: Writing and Running Bash Scripts in Linux</a></li>
       </ul>
     </nav>
   </section>
@@ -477,10 +478,69 @@ nano hello.txt</code></pre>
       </tr>
     </tbody>
   </table>
-
-
   </section>
+  <section class="lesson" id="lesson3">
+    
+  <section class="lesson" id="lesson5">
 
+
+  <h1>🧑‍🏫 Lecture: Writing and Running Bash Scripts in Linux (via JSLinux)</h1>
+
+  <h2>🧩 Part 1: What Is a Bash Script?</h2>
+  <p>A Bash script is a plain text file containing a sequence of commands that the Linux shell (Bash) can execute. It’s like a recipe for the terminal.</p>
+  <p><strong>Why use Bash scripts?</strong></p>
+  <ul>
+    <li>Automate repetitive tasks</li>
+    <li>Run multiple commands in sequence</li>
+    <li>Create simple programs and utilities</li>
+  </ul>
+
+  <h2>🛠️ Part 2: Getting Started with JSLinux</h2>
+  <ol>
+    <li>Go to <a href="https://bellard.org/jslinux/" target="_blank">JSLinux</a></li>
+    <li>Choose <strong>Linux x86 (the one with BusyBox)</strong></li>
+    <li>Wait for the terminal to load — you’ll see a Linux shell prompt like:</li>
+  </ol>
+  <pre>/ #</pre>
+
+  <h2>📄 Part 3: Writing Your First Bash Script</h2>
+  <p>Let’s create a script that prints “Hello, world!” and lists files.</p>
+
+  <h3>Step-by-step:</h3>
+  <p><strong>Create a file:</strong></p>
+  <pre><code>echo '#!/bin/sh' > hello.sh
+echo 'echo Hello, world!' >> hello.sh
+echo 'ls' >> hello.sh</code></pre>
+
+  <p><strong>Make it executable:</strong></p>
+  <pre><code>chmod +x hello.sh</code></pre>
+
+  <p><strong>Run the script:</strong></p>
+  <pre><code>./hello.sh</code></pre>
+
+  <p><strong>Expected Output:</strong></p>
+  <pre><code>Hello, world!
+hello.sh</code></pre>
+
+  <h2>🧠 Part 4: What Just Happened?</h2>
+  <ul>
+    <li><code>#!/bin/sh</code>: Tells Linux to use the shell to run this file.</li>
+    <li><code>echo</code>: Prints text to the terminal.</li>
+    <li><code>ls</code>: Lists files in the current directory.</li>
+    <li><code>chmod +x</code>: Makes the file executable.</li>
+    <li><code>./hello.sh</code>: Runs the script.</li>
+  </ul>
+
+  <h2>🧪 Part 5: Try These Variations</h2>
+  <p>Let students experiment with:</p>
+
+  <p><strong>Adding variables:</strong></p>
+  <pre><code>NAME="Mshari"
+ echo "Hello, $NAME!"</code></pre>
+
+  <p><strong>Using loops:</strong></p>
+  <pre><code>for i in 1 2 3; do echo "Count $i"; done</code></pre>
+  </section>
   
   <footer>
     <p>© 2025 Mshari Aljumaie. All rights reserved.</p>
