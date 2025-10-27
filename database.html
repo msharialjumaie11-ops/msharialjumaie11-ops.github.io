@@ -116,6 +116,7 @@
         <li><a href="#lesson2">Lecture 2: What Is SQL?</a></li>
         <li><a href="#lesson3">Lecture 3: Creating Table in SQL</a></li>
         <li><a href="#lesson4">Lecture 4: Inserting Data into a Table</a></li>
+        <li><a href="#lesson5">Lecture 5: SQL Basics: UPDATE and DELETE Statements</a></li>
       </ul>
     </nav>
   </section>
@@ -346,6 +347,58 @@ VALUES
 (103, 'AI Fundamentals', 'Dr. Khalid', 3);</code></pre>
 
 <div class="up-link"><a href="#top">🔝 Back to Top</a></div>
+</section>
+
+<section class="lesson" id="lesson5">
+
+
+  <h2>🛠️ SQL Basics: UPDATE and DELETE Statements</h2>
+
+  <h3>🧩 1. The UPDATE Statement</h3>
+  <p>The <strong>UPDATE</strong> command is used to modify existing records in a table.</p>
+
+  <p>🔹 <strong>Syntax:</strong></p>
+  <code>
+    UPDATE table_name<br>
+    SET column1 = value1, column2 = value2, ...<br>
+    WHERE condition;
+  </code>
+
+  <p>✅ <strong>Example:</strong></p>
+  <p>Suppose you have a table called <code>students</code>:</p>
+
+  <table>
+    <tr><th>id</th><th>name</th><th>grade</th></tr>
+    <tr><td>1</td><td>Aisha</td><td>B</td></tr>
+    <tr><td>2</td><td>Khalid</td><td>C</td></tr>
+    <tr><td>3</td><td>Fatimah</td><td>A</td></tr>
+  </table>
+
+  <p>To update Khalid’s grade to <code>B+</code>:</p>
+  <code>
+    UPDATE students<br>
+    SET grade = 'B+'<br>
+    WHERE name = 'Khalid';
+  </code>
+
+  <p class="note">⚠️ Always use a WHERE clause to avoid updating all rows by mistake!</p>
+
+  <h3>🧹 2. The DELETE Statement</h3>
+  <p>The <strong>DELETE</strong> command is used to remove records from a table.</p>
+
+  <p>🔹 <strong>Syntax:</strong></p>
+  <code>
+    DELETE FROM table_name<br>
+    WHERE condition;
+  </code>
+
+  <p>✅ <strong>Example:</strong></p>
+  <p>To delete the student with ID 2:</p>
+  <code>
+    DELETE FROM students<br>
+    WHERE id = 2;
+  </code>
+  <p class="note">⚠️ Again, never forget the WHERE clause unless you intend to delete all records.</p>
 </section>
   <footer>
     <p>© 2025 Mshari Aljumaie. All rights reserved.</p>
