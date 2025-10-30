@@ -116,6 +116,7 @@
         <li><a href="#lesson2">Lecture 2: Introduction to Network Security in Windows </a></li>
         <li><a href="#lesson3">Lecture 3: Why Use PowerShell for Network Security? </a></li>
         <li><a href="#lesson4">Lecture 4: Why Use CMD for Network Security? </a></li>
+        <li><a href="#lesson5">Lecture 5: Caesar Cipher in C++ </a></li>
       </ul>
     </nav>
   </section>
@@ -370,7 +371,42 @@
 
    <div class="up-link"><a href="#top">🔝 Back to Top</a></div>
  </section>
+<section class="lesson" id="lesson5">
+<h1>Caesar Cipher in C++</h1>
+    <pre><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
 
+// Encrypts the input text using Caesar cipher
+string encryptCaesar(string text, int shift) {
+    string result = "";
+    for (char c : text) {
+        if (isalpha(c)) {
+            char base = isupper(c) ? 'A' : 'a';
+            result += char((c - base + shift) % 26 + base);
+        } else {
+            result += c; // Non-alphabetic characters remain unchanged
+        }
+    }
+    return result;
+}
+
+int main() {
+    string message;
+    int shift;
+
+    cout &lt;&lt; "Enter your message: ";
+    getline(cin, message);
+    cout &lt;&lt; "Enter shift value (1-25): ";
+    cin >> shift;
+
+    string encrypted = encryptCaesar(message, shift);
+    cout &lt;&lt; "Encrypted message: " &lt;&lt; encrypted &lt;&lt; endl;
+
+    return 0;
+}
+</code></pre>
+</section>
   
   <footer>
     <p>© 2025 Mshari Aljumaie. All rights reserved.</p>
