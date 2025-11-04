@@ -114,6 +114,7 @@
       <ul>
         <li><a href="#lesson1">Lecture 1: What Is XML?</a></li>
         <li><a href="#lesson2">Lecture 2: Attributes, Nesting & Real-World Use</a></li>
+        <li><a herf="#lesson3">Lecture 3: Book List</a></li>
       </ul>
     </nav>
   </section>
@@ -277,6 +278,51 @@
   <footer>
     <p>© 2025 Mshari Aljumaie. All rights reserved.</p>
   </footer>
+<section class"lesson" id="lesson3">
+<h2>📚 Book List</h2>
+  <div id="output"></div>
 
+  <!-- Step 1: XML Data (stored inside HTML) -->
+  <script id="xmlData" type="text/xml">
+    <books>
+      <book>
+        <title>The Great Gatsby</title>
+        <author>F. Scott Fitzgerald</author>
+      </book>
+      <book>
+        <title>1984</title>
+        <author>George Orwell</author>
+      </book>
+    </books>
+  </script>
+
+  <!-- Step 2: JavaScript to Read and Show XML -->
+  <script>
+    // Get the XML text from the script tag
+    const xmlText = document.getElementById("xmlData").textContent.trim();
+
+    // Parse the XML text into a document
+    const parser = new DOMParser();
+    const xmlDoc = parser.parseFromString(xmlText, "text/xml");
+
+    // Find all <book> elements
+    const books = xmlDoc.getElementsByTagName("book");
+
+    // Create HTML to show the book list
+    let html = "<ul>";
+    for (let i = 0; i < books.length; i++) {
+      const title = books[i].getElementsByTagName("title")[0].textContent;
+      const author = books[i].getElementsByTagName("author")[0].textContent;
+      html += `<li><strong>${title}</strong> by ${author}</li>`;
+    }
+    html += "</ul>";
+
+    // Show the result in the page
+    document.getElementById("output").innerHTML = html;
+  </script>
+
+  <hr>
+  <p><strong>📝 Summary:</strong> XML stores data, JavaScript reads it, and HTML displays it. Simple and powerful!</p>
+</section>
 </body>
 </html>
