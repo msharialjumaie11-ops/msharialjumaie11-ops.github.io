@@ -114,7 +114,7 @@
       <ul>
         <li><a href="#lesson1">Lecture 1: What Is XML?</a></li>
         <li><a href="#lesson2">Lecture 2: Attributes, Nesting & Real-World Use</a></li>
-        <li><a herf="#lesson3">Lecture 3: Book List</a></li>
+        <li><a herf="#lesson3">Lecture 3: How to Display XML Data Using HTML and JavaScript</a></li>
       </ul>
     </nav>
   </section>
@@ -276,50 +276,53 @@
   </ul>
   </section>
 <section class"lesson" id="lesson3">
-<h2>📚 Book List</h2>
-  <div id="output"></div>
+  <h1>📘 How to Display XML Data Using HTML and JavaScript</h1>
+  <p>This example shows how to embed XML in HTML and use JavaScript to display it.</p>
 
-  <!-- Step 1: XML Data (stored inside HTML) -->
-  <script id="xmlData" type="text/xml">
-    <books>
-      <book>
-        <title>The Great Gatsby</title>
-        <author>F. Scott Fitzgerald</author>
-      </book>
-      <book>
-        <title>1984</title>
-        <author>George Orwell</author>
-      </book>
-    </books>
-  </script>
+  <h2>🔧 Code Example</h2>
+  <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Show XML Data&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h2&gt;Book List&lt;/h2&gt;
+  &lt;div id="output"&gt;&lt;/div&gt;
 
-  <!-- Step 2: JavaScript to Read and Show XML -->
-  <script>
-    // Get the XML text from the script tag
+  &lt;!-- Embedded XML --&gt;
+  &lt;script id="xmlData" type="text/xml"&gt;
+    &lt;books&gt;
+      &lt;book&gt;
+        &lt;title&gt;The Great Gatsby&lt;/title&gt;
+        &lt;author&gt;F. Scott Fitzgerald&lt;/author&gt;
+      &lt;/book&gt;
+      &lt;book&gt;
+        &lt;title&gt;1984&lt;/title&gt;
+        &lt;author&gt;George Orwell&lt;/author&gt;
+      &lt;/book&gt;
+    &lt;/books&gt;
+  &lt;/script&gt;
+
+  &lt;!-- JavaScript to parse and display XML --&gt;
+  &lt;script&gt;
     const xmlText = document.getElementById("xmlData").textContent.trim();
-
-    // Parse the XML text into a document
     const parser = new DOMParser();
     const xmlDoc = parser.parseFromString(xmlText, "text/xml");
 
-    // Find all <book> elements
     const books = xmlDoc.getElementsByTagName("book");
-
-    // Create HTML to show the book list
-    let html = "<ul>";
-    for (let i = 0; i < books.length; i++) {
+    let html = "&lt;ul&gt;";
+    for (let i = 0; i &lt; books.length; i++) {
       const title = books[i].getElementsByTagName("title")[0].textContent;
       const author = books[i].getElementsByTagName("author")[0].textContent;
-      html += `<li><strong>${title}</strong> by ${author}</li>`;
+      html += `&lt;li&gt;&lt;strong&gt;${title}&lt;/strong&gt; by ${author}&lt;/li&gt;`;
     }
-    html += "</ul>";
-
-    // Show the result in the page
+    html += "&lt;/ul&gt;";
     document.getElementById("output").innerHTML = html;
-  </script>
-
-  <hr>
-  <p><strong>📝 Summary:</strong> XML stores data, JavaScript reads it, and HTML displays it. Simple and powerful!</p>
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  <p><strong>📝 Tip:</strong> Use <code>&lt;pre&gt;</code> and <code>&lt;code&gt;</code> to show code without running it!</p>
 </section>
   <footer>
     <p>© 2025 Mshari Aljumaie. All rights reserved.</p>
