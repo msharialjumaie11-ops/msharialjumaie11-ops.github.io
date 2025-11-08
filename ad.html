@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Project: Simulating Sensor–Edge Communication</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f7fb;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background: linear-gradient(135deg, #2c3e50, #3498db);
+      color: #fff;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.2em;
+    }
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+    .card {
+      background: #fff;
+      padding: 25px 30px;
+      margin-bottom: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+    h2 {
+      color: #2c3e50;
+      margin-top: 0;
+      border-left: 5px solid #3498db;
+      padding-left: 10px;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    ul li {
+      margin: 12px 0;
+      padding-left: 25px;
+      position: relative;
+    }
+    ul li::before {
+      content: "✔";
+      position: absolute;
+      left: 0;
+      color: #3498db;
+      font-weight: bold;
+    }
+    .section {
+      margin-bottom: 20px;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #2c3e50;
+      color: #fff;
+      font-size: 0.9em;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Project Description: Simulating Sensor–Edge Communication</h1>
+  </header>
+
+  <div class="container">
+    <div class="card section">
+      <h2>🎯 Objective</h2>
+      <p>
+        Build a virtual project using any programming language to simulate how communication works between a 
+        <strong>sensor device</strong> (data producer) and an <strong>edge computing node</strong> (data processor). 
+        The goal is to demonstrate how lightweight protocols (such as HTTP) can be used to transmit sensor readings 
+        to an edge system for processing, storage, or decision-making.
+      </p>
+    </div>
+
+    <div class="card section">
+      <h2>🔑 Key Tasks</h2>
+
+      <h3>📡 Sensor Simulation (Client Program)</h3>
+      <ul>
+        <li>Create a program that acts like a sensor, generating data (e.g., temperature, humidity, motion).</li>
+        <li>Send this data to the edge node using HTTP requests (e.g., <code>POST</code> for new readings, <code>GET</code> to request processed results).</li>
+      </ul>
+
+      <h3>🖥️ Edge Node Simulation (Server Program)</h3>
+      <ul>
+        <li>Develop a server program that receives sensor data and responds with appropriate HTTP responses.</li>
+        <li>Implement basic request/response headers to show how information is exchanged.</li>
+        <li>Store incoming sensor readings and optionally process them (e.g., calculate averages, detect anomalies).</li>
+      </ul>
+
+      <h3>🔄 Communication Demonstration</h3>
+      <ul>
+        <li>Show how the edge node handles different types of requests:</li>
+        <ul>
+          <li><code>POST</code> → Sensor sends new data.</li>
+          <li><code>GET</code> → Sensor or monitoring system requests processed results or raw data.</li>
+        </ul>
+        <li>Demonstrate how multiple sensors can send data simultaneously to the edge node.</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    <p>Mshari Aljumaie &copy; 2025</p>
+  </footer>
+</body>
+</html>
