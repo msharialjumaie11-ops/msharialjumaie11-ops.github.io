@@ -406,21 +406,20 @@
   <section class="lesson" id="lesson4">
    <h2>Simple Calculator</h2>
 
-    <pre>
-<!-- Input fields -->
-<label>First Number:</label>
-<input type="number" id="num1"><br><br>
+ <pre><code>
+&lt;label&gt;First Number:&lt;/label&gt;
+&lt;input type="number" id="num1"&gt;&lt;br&gt;&lt;br&gt;
 
-<label>Second Number:</label>
-<input type="number" id="num2"><br><br>
+&lt;label&gt;Second Number:&lt;/label&gt;
+&lt;input type="number" id="num2"&gt;&lt;br&gt;&lt;br&gt;
 
-<!-- Button to trigger calculation -->
-<button onclick="calculate()">Add Numbers</button>
+&lt;!-- Button to trigger calculation --&gt;
+&lt;button onclick="calculate()"&gt;Add Numbers&lt;/button&gt;
 
-<!-- Where the result will appear -->
-<p id="result"></p>
+&lt;!-- Where the result will appear --&gt;
+&lt;p id="result"&gt;&lt;/p&gt;
 
-<script>
+&lt;script&gt;
   function calculate() {
     // Get values from input fields
     let number1 = document.getElementById("num1").value;
@@ -432,9 +431,8 @@
     // Show result
     document.getElementById("result").innerHTML = "Result: " + sum;
   }
-</script>
-
-</pre>
+&lt;/script&gt;
+  </code></pre>
 
 
   <!-- Input fields -->
