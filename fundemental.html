@@ -116,6 +116,7 @@
         <li><a href="#lesson2">Lecture 2: Headings, Paragraphs & Lists</a></li>
         <li><a href="#lesson3">Lecture 3: Introduction to JavaScript</a></li>
         <li><a href="#lesson4">Lecture 4: Introduction to HTML Tables</a></li>
+        <li><a href="#lesson5">Lecture 5: Simple Calculator</a></li>
       </ul>
     </nav>
   </section>
@@ -402,6 +403,38 @@
 
    <div class="up-link"><a href="#top">🔝 Back to Top</a></div>
  </section>
+  <section class="lesson" id="lesson4">
+   <h2>Simple Calculator</h2>
+
+  <!-- Input fields -->
+  <label>First Number:</label>
+  <input type="number" id="num1"><br><br>
+
+  <label>Second Number:</label>
+  <input type="number" id="num2"><br><br>
+
+  <!-- Button to trigger calculation -->
+  <button onclick="calculate()">Add Numbers</button>
+
+  <!-- Where the result will appear -->
+  <p id="result"></p>
+
+  <script>
+    function calculate() {
+      // Get values from input fields
+      let number1 = document.getElementById("num1").value;
+      let number2 = document.getElementById("num2").value;
+
+      // Convert to numbers and add
+      let sum = Number(number1) + Number(number2);
+
+      // Show result
+      document.getElementById("result").innerHTML = "Result: " + sum;
+    }
+  </script>
+
+    
+  </section>
 
   
   <footer>
