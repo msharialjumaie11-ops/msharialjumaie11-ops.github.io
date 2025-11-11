@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>XML Quiz with Login</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .login, .quiz { max-width: 600px; margin: auto; }
+    .quiz { display: none; }
+    h2 { color: #333; }
+    .question { margin-bottom: 20px; }
+    button { padding: 10px 15px; margin-top: 10px; }
+    .error { color: red; }
+  </style>
+</head>
+<body>
+  <!-- Login Page -->
+  <div class="login">
+    <h2>Login</h2>
+    <form id="loginForm">
+      <label>Username:</label><br>
+      <input type="text" id="username" required><br><br>
+      
+      <label>Password:</label><br>
+      <input type="password" id="password" required><br><br>
+      
+      <button type="submit">Login</button>
+    </form>
+    <p id="errorMsg" class="error"></p>
+  </div>
+
+  <!-- Quiz Page -->
+  <div class="quiz" id="quizPage">
+    <h2>XML Quiz</h2>
+    <p id="welcome"></p>
+    <form id="quizForm">
+      <!-- Question 1 -->
+      <div class="question">
+        <p>1. What does XML stand for?</p>
+        <input type="radio" name="q1" value="a"> a) eXtensible Markup Language<br>
+        <input type="radio" name="q1" value="b"> b) Extra Modern Language<br>
+        <input type="radio" name="q1" value="c"> c) Example Markup Language<br>
+        <input type="radio" name="q1" value="d"> d) Extended Machine Language<br>
+      </div>
+
+      <!-- Question 2 -->
+      <div class="question">
+        <p>2. What is the main purpose of XML?</p>
+        <input type="radio" name="q2" value="a"> a) Display content in browsers<br>
+        <input type="radio" name="q2" value="b"> b) Store and transport data<br>
+        <input type="radio" name="q2" value="c"> c) Create animations<br>
+        <input type="radio" name="q2" value="d"> d) Format text documents<br>
+      </div>
+
+      <!-- Question 3 -->
+      <div class="question">
+        <p>3. Which of the following is TRUE about XML tags?</p>
+        <input type="radio" name="q3" value="a"> a) They are predefined<br>
+        <input type="radio" name="q3" value="b"> b) They are customizable<br>
+        <input type="radio" name="q3" value="c"> c) They cannot be nested<br>
+        <input type="radio" name="q3" value="d"> d) They don’t need closing tags<br>
+      </div>
+
+      <!-- Question 4 -->
+      <div class="question">
+        <p>4. What is required in every XML document?</p>
+        <input type="radio" name="q4" value="a"> a) Multiple root elements<br>
+        <input type="radio" name="q4" value="b"> b) One root element<br>
+        <input type="radio" name="q4" value="c"> c) No nesting<br>
+        <input type="radio" name="q4" value="d"> d) Attributes only<br>
+      </div>
+
+      <!-- Question 5 -->
+      <div class="question">
+        <p>5. Which of the following is a common use of XML?</p>
+        <input type="radio" name="q5" value="a"> a) Video editing<br>
+        <input type="radio" name="q5" value="b"> b) Configuration files<br>
+        <input type="radio" name="q5" value="c"> c) Image compression<br>
+        <input type="radio" name="q5" value="d"> d) Gaming graphics<br>
+      </div>
+
+      <!-- Question 6 -->
+      <div class="question">
+        <p>6. In XML, attribute values must be:</p>
+        <input type="radio" name="q6" value="a"> a) Optional<br>
+        <input type="radio" name="q6" value="b"> b) Quoted<br>
+        <input type="radio" name="q6" value="c"> c) Numeric only<br>
+        <input type="radio" name="q6" value="d"> d) Written in uppercase<br>
+      </div>
+
+      <!-- Question 7 -->
+      <div class="question">
+        <p>7. Which is stricter in syntax rules?</p>
+        <input type="radio" name="q7" value="a"> a) HTML<br>
+        <input type="radio" name="q7" value="b"> b) XML<br>
+        <input type="radio" name="q7" value="c"> c) Both are equally strict<br>
+        <input type="radio" name="q7" value="d"> d) Neither<br>
+      </div>
+
+      <!-- Question 8 -->
+      <div class="question">
+        <p>8. When should attributes be used in XML?</p>
+        <input type="radio" name="q8" value="a"> a) For metadata or short values<br>
+        <input type="radio" name="q8" value="b"> b) For long nested data<br>
+        <input type="radio" name="q8" value="c"> c) To replace elements<br>
+        <input type="radio" name="q8" value="d"> d) Never<br>
+      </div>
+
+      <!-- Question 9 -->
+      <div class="question">
+        <p>9. Which of the following is an example of nested XML?</p>
+        <input type="radio" name="q9" value="a"> a) &lt;student name="Ali" age="21" /&gt;<br>
+        <input type="radio" name="q9" value="b"> b) &lt;student&gt;&lt;name&gt;Ali&lt;/name&gt;&lt;/student&gt;<br>
+        <input type="radio" name="q9" value="c"> c) &lt;class&gt;&lt;student&gt;&lt;name&gt;Ali&lt;/name&gt;&lt;/student&gt;&lt;/class&gt;<br>
+        <input type="radio" name="q9" value="d"> d) &lt;student&gt;Ali&lt;/student&gt;<br>
+      </div>
+
+      <!-- Question 10 -->
+      <div class="question">
+        <p>10. Which tool can be used to validate XML?</p>
+        <input type="radio" name="q10" value="a"> a) Code Beautify XML Validator<br>
+        <input type="radio" name="q10" value="b"> b) Photoshop<br>
+        <input type="radio" name="q10" value="c"> c) Excel<br>
+        <input type="radio" name="q10" value="d"> d) PowerPoint<br>
+      </div>
+
+      <button type="submit">Submit Quiz</button>
+    </form>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    // Login handling with credential check
+    document.getElementById("loginForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      if(username === "xml123" && password === "XML"){
+        document.querySelector(".login").style.display = "none";
+        document.getElementById("quizPage").style.display = "block";
+        document.getElementById("welcome").innerHTML = 
+          `<strong>Welcome, ${username}</strong>`;
+      } else {
+        document.getElementById("errorMsg").textContent = "Invalid credentials. Try again.";
+      }
+    });
+
+    // Quiz handling
+    const answers = {
+      q1: "a", q2: "b", q3: "b", q4: "b", q5: "b",
+      q6: "b", q7: "b", q8: "a", q9: "c", q10: "a"
+    };
+
+    document.getElementById("quizForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      let score = 0;
+      for (let q in answers) {
+        const selected = document.querySelector(`input[name="${q}"]:checked`);
+        if (selected && selected.value === answers[q]) {
+          score++;
+        }
+      }
+      document.getElementById("result").innerHTML = 
+        `<h3>Your Score: ${score}/10</h3>`;
+    });
+  </script>
+</body>
