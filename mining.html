@@ -116,6 +116,7 @@
         <li><a href="#lesson2">Lecture 2: What Is R Programming?</a></li>
         <li><a href="#lesson3">Lecture 3: Introduction to Math Manipulations in R</a></li>
         <li><a href="#lesson4">Lecture 4: Creating and Visualizing Dataframes in R</a></li>
+        <li><a href="#lesson5">Lecture: Dataframes in R</a></li>
       </ul>
     </nav>
   </section>
@@ -349,6 +350,102 @@ ggplot(students, aes(x = Name, y = Score, fill = Name)) +
   <p>Creates a clean, customizable bar chart.</p>
 
 </section>
+
+
+
+  
+  <section class="lesson" id="lesson5">
+
+
+      <h1>Lecture: Dataframes in R</h1>
+      <p class="footer">A concise walkthrough of dataframes, summary statistics, and visualization.</p>
+    </header>
+
+    <section class="card">
+      <h2>What is a dataframe</h2>
+      <p>A dataframe in R is like a spreadsheet or a table. It stores data in rows and columns, and each column can be of a different type (numeric, character, factor, etc.).</p>
+
+      <span class="label">Example</span>
+      <pre><code># Create a simple dataframe
+students &lt;- data.frame(
+  Name = c("Student1", "Student2", "Student3"),
+  Score = c(85, 90, 78)
+)
+
+# Inspect
+str(students)
+head(students)
+</code></pre>
+
+      <ul>
+        <li><strong>Name:</strong> character column</li>
+        <li><strong>Score:</strong> numeric column</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Creating a dataframe for 26 students</h2>
+      <p>Let’s imagine we have 26 students with random scores between 50 and 100.</p>
+
+      <pre><code>set.seed(123)  # For reproducibility
+
+students &lt;- data.frame(
+  Name = paste("Student", 1:26, sep = ""),
+  Score = sample(50:100, 26, replace = TRUE)
+)
+
+print(students)
+</code></pre>
+    </section>
+
+    <section class="card">
+      <h2>Calculating summary statistics</h2>
+      <p>We want the average, standard deviation, minimum, and maximum of all scores.</p>
+
+      <pre><code>average &lt;- mean(students$Score)
+std_dev &lt;- sd(students$Score)
+minimum &lt;- min(students$Score)
+maximum &lt;- max(students$Score)
+
+cat("Average:", average, "\n")
+cat("Standard Deviation:", std_dev, "\n")
+cat("Minimum:", minimum, "\n")
+cat("Maximum:", maximum, "\n")
+</code></pre>
+    </section>
+
+    <section class="card">
+      <h2>Visualizing results in a graph</h2>
+      <p>You can use Base R or ggplot2 to visualize these statistics.</p>
+
+      <span class="label">Base R example</span>
+      <pre><code>stats &lt;- c(average, std_dev, minimum, maximum)
+names(stats) &lt;- c("Average", "Std Dev", "Min", "Max")
+
+barplot(
+  stats,
+  main = "Summary Statistics of Student Scores",
+  col = c("skyblue", "orange", "green", "red"),
+  ylab = "Value"
+)
+</code></pre>
+
+      <span class="label">ggplot2 example (more polished)</span>
+      <pre><code>library(ggplot2)
+
+stats_df &lt;- data.frame(
+  Statistic = c("Average", "Std Dev", "Min", "Max"),
+  Value = c(average, std_dev, minimum, maximum)
+)
+
+ggplot(stats_df, aes(x = Statistic, y = Value, fill = Statistic)) +
+  geom_bar(stat = "identity") +
+  theme_minimal() +
+  ggtitle("Summary Statistics of Student Scores")
+</code></pre>
+    </section>
+    
+  </section>
   
   <footer>
     <p>© 2025 Mshari Aljumaie. All rights reserved.</p>
